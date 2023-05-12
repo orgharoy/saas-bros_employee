@@ -1,23 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Route, Routes, useLocation } from "react-router-dom";
+import Navigation from "./components/Navigation.js";
+import Topbar from "./components/Topbar.js";
+import Login from "./pages/Login.js";
+import Dashboard from "./pages/Dashboard.js";
+import NewUser from "./pages/RegisterNewUser.js";
+import MyUsers from "./pages/ViewUsers.js";
+import Calendar from "./pages/Calendar.js";
+import Notes from "./pages/Notes.js";
+
+import User from "./pages/User.js";
+
+
 
 function App() {
+
+  const location = useLocation();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className=" bg-gray-200 ">
+      { location.pathname !== '/login' && <Topbar/> }
+      <div className="grid grid-cols-6 w-screen">
+        <div className="col-span-1">
+          { location.pathname !== '/login' && <Navigation /> }
+        </div>
+        <div className= "col-span-5 p-5">
+          <Routes>
+            <Route path="/login" element={<Login/>} />  
+            <Route path="/" element={<Dashboard/>} />
+            <Route path="/register-business" element={<NewUser/>} />
+            <Route path="/businesses" element={<MyUsers/>} />
+            <Route path="/calendar" element={<Calendar/>} />
+            <Route path="/notes" element={<Notes/>} />
+
+            <Route path="/user" element={<User/>} />
+          </Routes>
+        </div>
+      </div>
+      
     </div>
   );
 }
