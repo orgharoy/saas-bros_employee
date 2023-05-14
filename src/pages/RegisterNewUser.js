@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios';
 
 import { useState } from 'react'
 
@@ -28,14 +29,24 @@ const RegisterNewUser = () => {
     return true;
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+
     e.preventDefault();
+
     if(validate(formValues) === true){
-      console.log("ready to be sent to the backend")
+
+      try {
+        const response = await axios.post('localhost:3001/emp/create-merchant', formValues);
+        console.log(response);
+      } catch (error) {
+        console.error(error);
+      }
+
     } else {
       console.log(errorMessage);
     }
   }
+
 
   const cancelButton = (e) => {
     e.preventDefault();
