@@ -15,21 +15,31 @@ const RegisterNewUser = () => {
     businessRegNumber: "",
     businessTaxId: "",
     numberOfEmployees: "",
-    salesVolume: "",
+    salesVolume: ""
   }); 
 
+  const [errorMessage, setErrorMessage] = useState("");
+
   const validate = (formValues) => {
-    
+    if(formValues.businessName === "" || formValues.businessType === "" || formValues.ownerName === "" || formValues.ownerContactNumber === "" || formValues.businessEmail === "" || formValues.businessContactNumber === "" || formValues.businessAddress === "" || formValues.businessRegNumber === "" || formValues.businessTaxId === "" || formValues.numberOfEmployees === "" || formValues.salesVolumne === ""){
+      setErrorMessage("Fill in all fields");
+      return false;
+    } 
+    return true;
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    validate(formValues);
-    console.log(formValues.businessAddress)
+    if(validate(formValues) === true){
+      console.log("ready to be sent to the backend")
+    } else {
+      console.log(errorMessage);
+    }
   }
 
   const cancelButton = (e) => {
     e.preventDefault();
+    setFormValues({businessName: "", businessType: "", ownerName: "", ownerContactNumber: "", businessEmail: "", businessContactNumber: "", businessAddress: "", businessRegNumber: "", businessTaxId: "", numberOfEmployees: "", salesVolume: ""})
   }
 
   return (
