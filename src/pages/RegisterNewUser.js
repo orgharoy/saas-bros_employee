@@ -22,10 +22,77 @@ const RegisterNewUser = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const validate = (formValues) => {
-    if(formValues.businessName === "" || formValues.businessType === "" || formValues.ownerName === "" || formValues.ownerContactNumber === "" || formValues.businessEmail === "" || formValues.businessContactNumber === "" || formValues.businessAddress === "" || formValues.businessRegNumber === "" || formValues.businessTaxId === "" || formValues.numberOfEmployees === "" || formValues.salesVolumne === ""){
+    if(formValues.businessName === "" || formValues.businessType === "" || 
+      formValues.ownerName === "" || formValues.ownerContactNumber === "" || 
+      formValues.businessEmail === "" || formValues.businessContactNumber === "" || 
+      formValues.businessAddress === "" || formValues.businessRegNumber === "" || 
+      formValues.businessTaxId === "" || formValues.numberOfEmployees === "" || 
+      formValues.salesVolumne === ""){
       setErrorMessage("Fill in all fields");
       return false;
     } 
+
+    // added if statement for validation -------------
+    if (!/^[A-Za-z\s]+$/.test(formValues.businessName)) {
+      setErrorMessage("Business name must contain only letters and spaces");
+      return false;
+    }
+  
+    if (!/^[A-Za-z\s]+$/.test(formValues.ownerName)) {
+      setErrorMessage("Owner's name must contain only letters and spaces");
+      return false;
+    }
+  
+    if (!/^\d{10}$/.test(formValues.ownerContactNumber)) {
+      setErrorMessage("Owner's contact number must be a 10-digit number");
+      return false;
+    }
+  
+    if (!/^\d{10}$/.test(formValues.businessContactNumber)) {
+      setErrorMessage("Business contact number must be a 10-digit number");
+      return false;
+    }
+  
+    if (
+      !/^([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/.test(
+        formValues.businessEmail
+      )
+    ) {
+      setErrorMessage("Enter a valid email address for the business");
+      return false;
+    }
+  
+    if (!/^[A-Za-z0-9\s]+$/.test(formValues.businessAddress)) {
+      setErrorMessage(
+        "Business address must contain only letters, numbers, and spaces"
+      );
+      return false;
+    }
+  
+    if (!/^\d{9}$/.test(formValues.businessRegNumber)) {
+      setErrorMessage("Business registration number must be a 9-digit number");
+      return false;
+    }
+  
+    if (!/^[A-Za-z0-9\s]+$/.test(formValues.businessTaxId)) {
+      setErrorMessage(
+        "Business tax ID must contain only letters, numbers, and spaces"
+      );
+      return false;
+    }
+  
+    /*
+    if (!/^\d+$/.test(formValues.numberOfEmployees)) {
+      setErrorMessage("Number of employees must be a positive integer");
+      return false;
+    }
+    
+    if (!/^\d+$/.test(formValues.salesVolume)) {
+      setErrorMessage("Sales volume must be a positive integer");
+      return false;
+    }
+    */
+   //-------------------
     return true;
   }
 
