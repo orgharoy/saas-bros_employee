@@ -36,7 +36,7 @@ const RegisterNewUser = () => {
     if (!/^[A-Za-z\s]+$/.test(formValues.businessName)) {
       setErrorMessage("Business name must contain only letters and spaces");
       return false;
-    }
+    } 
   
     if (!/^[A-Za-z\s]+$/.test(formValues.ownerName)) {
       setErrorMessage("Owner's name must contain only letters and spaces");
