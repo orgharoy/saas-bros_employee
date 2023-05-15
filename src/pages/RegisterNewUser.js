@@ -41,7 +41,7 @@ const RegisterNewUser = () => {
     if (!/^[A-Za-z\s]+$/.test(formValues.ownerName)) {
       setErrorMessage("Owner's name must contain only letters and spaces");
       return false;
-    }
+    } 
   
     if (!/^\d{10}$/.test(formValues.ownerContactNumber)) {
       setErrorMessage("Owner's contact number must be a 10-digit number");
