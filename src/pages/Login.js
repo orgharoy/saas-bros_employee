@@ -27,7 +27,11 @@ const Login = () => {
     if (isValid()) {
       try {
         const response = await axios.post('http://localhost:3001/emp/employee-login', formValues);
-        console.log(response.data); // Assuming the server responds with some data
+         
+        const { token } = response.data;
+        localStorage.setItem('jwtToken', token);
+        
+        console.log(response.data);
       } catch (error) {
         console.error(error);
       }
