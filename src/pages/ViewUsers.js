@@ -9,14 +9,11 @@ const ViewUsers = () => {
   const [users, setUsers] = useState({merchants: []});
   const [refreshCount, setRefreshCount] = useState();
 
-  let apiString = `http://localhost:3001/emp/my-merchants/${userId}`
-  console.log(apiString)
-
   useEffect(() => {
     const fetchUsers = async () => {
       try {
         console.log(userId);
-        const response = await axios.get(apiString);
+        const response = await axios.get(`http://localhost:3001/emp/my-merchants/${userId}`);
         setUsers(response.data);
         console.log(users);
       } catch (error) {
