@@ -7,6 +7,7 @@ const Navigation = () => {
       <div className="flex flex-col">
         <Link to="/">Home</Link>
         <Link to="/register-business">Register New Business</Link>
+        <Link to="/packages">Packages</Link>
         <Link to="/businesses">My Businesses</Link>
         <Link to="/calendar">My Calendar</Link>
         <Link to="/notes">My Notes</Link>

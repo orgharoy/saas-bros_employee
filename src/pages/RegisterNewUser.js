@@ -1,7 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
 
+import { UserContext } from '../userContext.js';
+
 const RegisterNewUser = () => {
+
+  const { userId, setUserId } = useContext(UserContext);
 
   const [formValues, setFormValues] = useState({
     businessName: "",
@@ -14,7 +18,9 @@ const RegisterNewUser = () => {
     businessRegNumber: "",
     businessTaxId: "",
     numberOfEmployees: "",
-    salesVolume: ""
+    salesVolume: "",
+    userPwd: "bangladesh1",
+    createdBy: userId
   }); 
 
   const [errorMessage, setErrorMessage] = useState("");
@@ -101,7 +107,7 @@ const RegisterNewUser = () => {
     if(validate(formValues) === true){
 
       try {
-        const response = await axios.post('localhost:3001/emp/create-merchant', formValues);
+        const response = await axios.post('http://localhost:3001/emp/create-merchant', formValues);
         console.log(response);
       } catch (error) {
         console.error(error);

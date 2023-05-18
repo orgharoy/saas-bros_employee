@@ -8,6 +8,7 @@ import NewUser from "./pages/RegisterNewUser.js";
 import MyUsers from "./pages/ViewUsers.js";
 import Calendar from "./pages/Calendar.js";
 import Notes from "./pages/Notes.js";
+import Packages from "./pages/Packages.js";
 
 import User from "./pages/User.js";
 
@@ -29,6 +30,7 @@ function App() {
             <Route path="/login" element={<Login/>} />  
             <Route path="/" element={<Dashboard/>} />
             <Route path="/register-business" element={<NewUser/>} />
+            <Route path="/packages" element={<Packages />}/>
             <Route path="/businesses" element={<MyUsers/>} />
             <Route path="/calendar" element={<Calendar/>} />
             <Route path="/notes" element={<Notes/>} />

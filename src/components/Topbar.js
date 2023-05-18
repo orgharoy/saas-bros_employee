@@ -1,13 +1,24 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Menu, Transition } from '@headlessui/react';
+import { UserContext } from '../userContext.js';
 
 
 const Topbar = () => {
+  const navigate = useNavigate();
+  const { userId, setUserId } = useContext(UserContext);
+
+  const handleLogout = () => {
+    localStorage.removeItem('jwtToken');
+    setUserId(null);
+
+    navigate('/login');
+  }
+
   return (
     <div className=' px-5 flex justify-between items-center shadow-md h-12 bg-white sticky top-0'>
       <h1>SaaS Bros</h1>
       <div className='flex gap-3 items-center'>
-        
 
           <Menu as="div" className="relative inline-block text-left z-50">
             <div>
@@ -30,7 +41,7 @@ const Topbar = () => {
                 </Menu.Item>
                 <Menu.Item>
                   {({ active }) => (
-                    <button className={`${active ? 'bg-violet-500 text-white' : 'text-gray-900'} group flex w-full items-center rounded-md px-2 py-2 text-sm`}>
+                    <button className={`${active ? 'bg-violet-500 text-white' : 'text-gray-900'} group flex w-full items-center rounded-md px-2 py-2 text-sm`} onClick={handleLogout}>
                       Logout
                     </button>
                   )}

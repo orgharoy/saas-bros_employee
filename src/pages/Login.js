@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { UserContext } from '../userContext.js';
 
 const Login = () => {
+  const navigate = useNavigate();
+  const { userId, setUserId } = useContext(UserContext);
   const [formValues, setFormValues] = useState({ email: "", password: ""});
   const [errorMessages, setErrorMessages] = useState({ email: '', password: '' });
-  
+
   const isValid = () => {
     let errors = { email: '', password: '' };
     let isValid = true;
@@ -28,10 +32,11 @@ const Login = () => {
       try {
         const response = await axios.post('http://localhost:3001/emp/employee-login', formValues);
          
-        const { token } = response.data;
+        const { token, employee } = response.data;
         localStorage.setItem('jwtToken', token);
+        setUserId(employee._id);
         
-        console.log(response.data);
+        navigate('/');
       } catch (error) {
         console.error(error);
       }
