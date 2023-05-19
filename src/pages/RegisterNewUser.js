@@ -26,6 +26,7 @@ const RegisterNewUser = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const validate = (formValues) => {
+    /*
     if(formValues.businessName === "" || formValues.businessType === "" || 
       formValues.ownerName === "" || formValues.ownerContactNumber === "" || 
       formValues.businessEmail === "" || formValues.businessContactNumber === "" || 
@@ -34,69 +35,89 @@ const RegisterNewUser = () => {
       formValues.salesVolumne === ""){
       setErrorMessage("Fill in all fields");
       return false;
-    } 
-
-    // added if statement for validation -------------
-    if (!/^[A-Za-z\s]+$/.test(formValues.businessName)) {
-      setErrorMessage("Business name must contain only letters and spaces");
+    } */
+    
+    if (formValues.businessName === "") {
+      setErrorMessage ("Business name is required");
       return false;
-    } 
-  
-    if (!/^[A-Za-z\s]+$/.test(formValues.ownerName)) {
+    }else if (!/^[A-Za-z\s]+$/.test(formValues.businessName)) {
+      setErrorMessage ("Business name must contain only letters and spaces");
+      return false;
+    }
+    
+    if (formValues.businessType === "") {
+      setErrorMessage ("Please select Business Type");
+      return false;
+    }
+    
+    if (formValues.ownerName === "") {
+      setErrorMessage("Owner's name is required");
+      return false;
+    } else if (!/^[A-Za-z\s]+$/.test(formValues.ownerName)) {
       setErrorMessage("Owner's name must contain only letters and spaces");
       return false;
     } 
   
-    if (!/^\d{10}$/.test(formValues.ownerContactNumber)) {
+    if (formValues.ownerContactNumber === "") {
+      setErrorMessage("Owner's Contact Number is required");
+      return false;
+    } else if (!/^\d{10}$/.test(formValues.ownerContactNumber)) {
       setErrorMessage("Owner's contact number must be a 10-digit number");
       return false;
     }
-  
-    if (!/^\d{10}$/.test(formValues.businessContactNumber)) {
-      setErrorMessage("Business contact number must be a 10-digit number");
+
+    if (formValues.businessEmail === "") {
+      setErrorMessage("Business Email is required");
       return false;
-    }
-  
-    if (
-      !/^([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/.test(
-        formValues.businessEmail
-      )
-    ) {
+    } else if (!/^([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/.test(formValues.businessEmail)) {
       setErrorMessage("Enter a valid email address for the business");
       return false;
     }
   
-    if (!/^[A-Za-z0-9\s]+$/.test(formValues.businessAddress)) {
-      setErrorMessage(
-        "Business address must contain only letters, numbers, and spaces"
-      );
+    if (formValues.businessContactNumber === "") {
+      setErrorMessage("Business Contact Number is required");
+      return false;
+    } else if (!/^\d{10}$/.test(formValues.businessContactNumber)) {
+      setErrorMessage("Business contact number must be a 10-digit number");
       return false;
     }
   
-    if (!/^\d{9}$/.test(formValues.businessRegNumber)) {
+    if (formValues.businessAddress === "") {
+      setErrorMessage("Business Address is required");
+      return false;
+    } else if (!/^[A-Za-z0-9\s]+$/.test(formValues.businessAddress)) {
+      setErrorMessage("Business address must contain only letters, numbers, and spaces");
+      return false;
+    }
+  
+    if (formValues.businessRegNumber === "") {
+      setErrorMessage("Business registration number is required");
+      return false;
+    } else if (!/^\d{9}$/.test(formValues.businessRegNumber)) {
       setErrorMessage("Business registration number must be a 9-digit number");
       return false;
     }
   
-    if (!/^[A-Za-z0-9\s]+$/.test(formValues.businessTaxId)) {
+    if (formValues.businessTaxId === "") {
+      setErrorMessage("Business Tax ID is required");
+      return false;
+    } else if (!/^[A-Za-z0-9\s]+$/.test(formValues.businessTaxId)) {
       setErrorMessage(
         "Business tax ID must contain only letters, numbers, and spaces"
       );
       return false;
     }
-  
-    /*
-    if (!/^\d+$/.test(formValues.numberOfEmployees)) {
-      setErrorMessage("Number of employees must be a positive integer");
+
+    if (formValues.numberOfEmployees === "") {
+      setErrorMessage("Please select Employee Count");
+      return false;
+    }
+
+    if (formValues.salesVolume === "") {
+      setErrorMessage("Please select Sales Volume");
       return false;
     }
     
-    if (!/^\d+$/.test(formValues.salesVolume)) {
-      setErrorMessage("Sales volume must be a positive integer");
-      return false;
-    }
-    */
-   //-------------------
     return true;
   }
 
@@ -122,11 +143,13 @@ const RegisterNewUser = () => {
   const cancelButton = (e) => {
     e.preventDefault();
     setFormValues({businessName: "", businessType: "", ownerName: "", ownerContactNumber: "", businessEmail: "", businessContactNumber: "", businessAddress: "", businessRegNumber: "", businessTaxId: "", numberOfEmployees: "", salesVolume: ""})
+    setErrorMessage('')
   }
 
   return (
     <div className=" bg-pink-200 p-5 rounded-md text-center">
-      <h1 className="text-left text-2xl mb-10">Register New User</h1>
+      <h1 className="text-left text-2xl mb-5">Register New User </h1>
+      {errorMessage && <p className="text-red-500 text-left mb-5">{errorMessage}</p>}
       <form>
         <div className="grid grid-cols-10 gap-x-10">
 
