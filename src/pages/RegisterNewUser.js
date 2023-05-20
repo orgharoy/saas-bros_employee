@@ -19,107 +19,119 @@ const RegisterNewUser = () => {
     businessTaxId: "",
     numberOfEmployees: "",
     salesVolume: "",
-    userPwd: "bangladesh1",
-    createdBy: userId
+    //userPwd: "bangladesh1",
+    //createdBy: userId
   }); 
 
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState({
+    businessName: "",
+    businessType: "",
+    ownerName: "",
+    ownerContactNumber: "",
+    businessEmail: "",
+    businessContactNumber: "",
+    businessAddress: "",
+    businessRegNumber: "",
+    businessTaxId: "",
+    numberOfEmployees: "",
+    salesVolume: ""
+  });
 
   const validate = (formValues) => {
-    /*
-    if(formValues.businessName === "" || formValues.businessType === "" || 
-      formValues.ownerName === "" || formValues.ownerContactNumber === "" || 
-      formValues.businessEmail === "" || formValues.businessContactNumber === "" || 
-      formValues.businessAddress === "" || formValues.businessRegNumber === "" || 
-      formValues.businessTaxId === "" || formValues.numberOfEmployees === "" || 
-      formValues.salesVolumne === ""){
-      setErrorMessage("Fill in all fields");
-      return false;
-    } */
-    
-    if (formValues.businessName === "") {
-      setErrorMessage ("Business name is required");
-      return false;
-    }else if (!/^[A-Za-z\s]+$/.test(formValues.businessName)) {
-      setErrorMessage ("Business name must contain only letters and spaces");
-      return false;
-    }
-    
-    if (formValues.businessType === "") {
-      setErrorMessage ("Please select Business Type");
-      return false;
-    }
-    
-    if (formValues.ownerName === "") {
-      setErrorMessage("Owner's name is required");
-      return false;
-    } else if (!/^[A-Za-z\s]+$/.test(formValues.ownerName)) {
-      setErrorMessage("Owner's name must contain only letters and spaces");
-      return false;
-    } 
-  
-    if (formValues.ownerContactNumber === "") {
-      setErrorMessage("Owner's Contact Number is required");
-      return false;
-    } else if (!/^\d{10}$/.test(formValues.ownerContactNumber)) {
-      setErrorMessage("Owner's contact number must be a 10-digit number");
-      return false;
+    let errors = {
+      businessName: "",
+      businessType: "",
+      ownerName: "",
+      ownerContactNumber: "",
+      businessEmail: "",
+      businessContactNumber: "",
+      businessAddress: "",
+      businessRegNumber: "",
+      businessTaxId: "",
+      numberOfEmployees: "",
+      salesVolume: "",
+      userPwd: "bangladesh1",
+      createdBy: userId
+    };
+
+    let validate =true;
+
+    if (!formValues.businessName) {
+      errors.businessName = "Business name is required";
+      validate = false;
     }
 
-    if (formValues.businessEmail === "") {
-      setErrorMessage("Business Email is required");
-      return false;
-    } else if (!/^([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/.test(formValues.businessEmail)) {
-      setErrorMessage("Enter a valid email address for the business");
-      return false;
-    }
-  
-    if (formValues.businessContactNumber === "") {
-      setErrorMessage("Business Contact Number is required");
-      return false;
-    } else if (!/^\d{10}$/.test(formValues.businessContactNumber)) {
-      setErrorMessage("Business contact number must be a 10-digit number");
-      return false;
-    }
-  
-    if (formValues.businessAddress === "") {
-      setErrorMessage("Business Address is required");
-      return false;
-    } else if (!/^[A-Za-z0-9\s]+$/.test(formValues.businessAddress)) {
-      setErrorMessage("Business address must contain only letters, numbers, and spaces");
-      return false;
-    }
-  
-    if (formValues.businessRegNumber === "") {
-      setErrorMessage("Business registration number is required");
-      return false;
-    } else if (!/^\d{9}$/.test(formValues.businessRegNumber)) {
-      setErrorMessage("Business registration number must be a 9-digit number");
-      return false;
-    }
-  
-    if (formValues.businessTaxId === "") {
-      setErrorMessage("Business Tax ID is required");
-      return false;
-    } else if (!/^[A-Za-z0-9\s]+$/.test(formValues.businessTaxId)) {
-      setErrorMessage(
-        "Business tax ID must contain only letters, numbers, and spaces"
-      );
-      return false;
+    if (!formValues.businessType) {
+      errors.businessType = "Please select business type";
+      validate = false;
     }
 
-    if (formValues.numberOfEmployees === "") {
-      setErrorMessage("Please select Employee Count");
-      return false;
+    if (!formValues.ownerName) {
+      errors.ownerName = "Owner name is required";
+      validate = false;
     }
 
-    if (formValues.salesVolume === "") {
-      setErrorMessage("Please select Sales Volume");
-      return false;
+    if (!formValues.ownerContactNumber) {
+      errors.ownerContactNumber = "Owner contact number is required";
+      validate = false;
+    } else if (!formValues.ownerContactNumber.match(/[0-9]+$/)) {
+      errors.ownerContactNumber = "Invalid contact number. Please enter only numbers";
+      validate = false;
+    } else if (!formValues.ownerContactNumber.match(/^\+?60[0-9]+$/)) {
+      errors.ownerContactNumber = "Invalid contact number. Please enter a valid contact number starting with the country code '+60' ";
+      validate = false;
     }
-    
-    return true;
-  }
+
+    if (!formValues.businessEmail) {
+      errors.businessEmail = "Business emailis required";
+      validate = false;
+    } else if (!formValues.businessEmail.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+      errors.businessEmail = "Invalid email address";
+      validate = false;
+    }
+
+    if (!formValues.businessContactNumber) {
+      errors.businessContactNumber = "Business contact number is required";
+      validate = false;
+    } else if (!formValues.businessContactNumber.match(/[0-9]+$/)) {
+      errors.businessContactNumber = "Invalid contact number. Please enter only numbers";
+      validate = false;
+    } else if (!formValues.businessContactNumber.match(/^\+?60[0-9]+$/)) {
+      errors.businessContactNumber = "Invalid contact number. Please enter a valid contact number starting with the country code '+60' ";
+      validate = false;
+    }
+
+    if (!formValues.businessAddress) {
+      errors.businessAddress = "Business address is required";
+      validate = false;
+    }
+
+    if (!formValues.businessRegNumber) {
+      errors.businessRegNumber = "Business registration number is required";
+      validate = false;
+    } else if (!formValues.businessRegNumber.match(/[0-9]+$/)) {
+      errors.businessRegNumber = "Please enter only numbers";
+      validate = false;
+    }
+
+    if (!formValues.businessTaxId) {
+      errors.businessTaxId = "Business tax ID is required";
+      validate = false;
+    }
+
+    if (!formValues.numberOfEmployees) {
+      errors.numberOfEmployees = "Please select employee count";
+      validate = false;
+    }
+
+    if (!formValues.salesVolume) {
+      errors.salesVolume = "Please select sales volume";
+      validate = false;
+    }
+
+    setErrorMessage(errors);
+    return validate;
+  };
 
   const handleSubmit = async (e) => {
 
@@ -143,13 +155,13 @@ const RegisterNewUser = () => {
   const cancelButton = (e) => {
     e.preventDefault();
     setFormValues({businessName: "", businessType: "", ownerName: "", ownerContactNumber: "", businessEmail: "", businessContactNumber: "", businessAddress: "", businessRegNumber: "", businessTaxId: "", numberOfEmployees: "", salesVolume: ""})
-    setErrorMessage('')
+    setErrorMessage("");
   }
 
   return (
     <div className=" bg-pink-200 p-5 rounded-md text-center">
       <h1 className="text-left text-2xl mb-5">Register New User </h1>
-      {errorMessage && <p className="text-red-500 text-left mb-5">{errorMessage}</p>}
+
       <form>
         <div className="grid grid-cols-10 gap-x-10">
 
@@ -159,6 +171,7 @@ const RegisterNewUser = () => {
 
           <div  className="col-span-3 pb-5">
             <input type="text" name="businessName" id="businessName" value={formValues.businessName} onChange={(e) => setFormValues({...formValues, businessName:e.target.value})} className="w-full"/>
+            {errorMessage.businessName && <p className="text-red-500 text-left">{errorMessage.businessName}</p>}
           </div>
 
           <div className="col-span-2 pb-5 text-left">
@@ -175,6 +188,7 @@ const RegisterNewUser = () => {
               <option value="htmlForeign Company">Foreign Company</option>
               <option value="Limited Liability Partnership">Limited Liability Partnership</option>
             </select>
+            {errorMessage.businessType && <p className="text-red-500 text-left">{errorMessage.businessType}</p>}
           </div>
 
           
@@ -186,6 +200,7 @@ const RegisterNewUser = () => {
 
           <div  className="col-span-3 pb-5">
             <input type="text" name="ownerName" id="ownerName" value={formValues.ownerName} onChange={(e) => setFormValues({...formValues, ownerName:e.target.value})} className="w-full"/>
+            {errorMessage.ownerName && <p className="text-red-500 text-left">{errorMessage.ownerName}</p>}
           </div>
 
           <div className="col-span-2 pb-5 text-left">
@@ -194,6 +209,7 @@ const RegisterNewUser = () => {
           
           <div  className="col-span-3 pb-5">
             <input type="tel" name="ownerContactNumber" id="ownerContactNumber" value={formValues.ownerContactNumber} onChange={(e) => setFormValues({...formValues, ownerContactNumber:e.target.value})} className="w-full"/>
+            {errorMessage.ownerContactNumber && <p className="text-red-500 text-left">{errorMessage.ownerContactNumber}</p>}
           </div>
 
 {/* this is another row */}
@@ -204,6 +220,7 @@ const RegisterNewUser = () => {
 
           <div  className="col-span-3 pb-5">
             <input type="email" name="businessEmail" id="businessEmail" value={formValues.businessEmail} onChange={(e) => setFormValues({...formValues, businessEmail:e.target.value})}  className="w-full"/>
+            {errorMessage.businessEmail && <p className="text-red-500 text-left">{errorMessage.businessEmail}</p>}
           </div>
 
           <div className="col-span-2 pb-5 text-left">
@@ -212,6 +229,7 @@ const RegisterNewUser = () => {
           
           <div  className="col-span-3 pb-5">
             <input type="tel" name="businessContactNumber" id="businessContactNumber" value={formValues.businessContactNumber} onChange={(e) => setFormValues({...formValues, businessContactNumber:e.target.value})} className="w-full"/>
+            {errorMessage.businessContactNumber && <p className="text-red-500 text-left">{errorMessage.businessContactNumber}</p>}
           </div>
 
 
@@ -223,6 +241,7 @@ const RegisterNewUser = () => {
 
           <div  className="col-span-8 pb-5">
             <input type="text" name="businessAddress" id="businessAddress" value={formValues.businessAddress} onChange={(e) => setFormValues({...formValues, businessAddress:e.target.value})} className="w-full"/>
+            {errorMessage.businessAddress && <p className="text-red-500 text-left">{errorMessage.businessAddress}</p>}
           </div>
 
           
@@ -234,6 +253,7 @@ const RegisterNewUser = () => {
 
           <div  className="col-span-3 pb-5">
             <input type="text" name="businessRegNumber" id="businessRegNumber" value={formValues.businessRegNumber} onChange={(e) => setFormValues({...formValues, businessRegNumber:e.target.value})} className="w-full"/>
+            {errorMessage.businessRegNumber && <p className="text-red-500 text-left">{errorMessage.businessRegNumber}</p>}
           </div>
 
           <div className="col-span-2 pb-5 text-left">
@@ -242,6 +262,7 @@ const RegisterNewUser = () => {
           
           <div  className="col-span-3 pb-5">
             <input type="text" name="businessTaxId" id="businessTaxId" value={formValues.businessTaxId} onChange={(e) => setFormValues({...formValues, businessTaxId:e.target.value})} className="w-full"/>
+            {errorMessage.businessTaxId && <p className="text-red-500 text-left">{errorMessage.businessTaxId}</p>}
           </div>
 
 {/* this is another row */}
@@ -259,6 +280,7 @@ const RegisterNewUser = () => {
               <option value="50 - 100">50 - 100</option>
               <option value="Above 100">Above 100</option>
             </select>
+            {errorMessage.numberOfEmployees && <p className="text-red-500 text-left">{errorMessage.numberOfEmployees}</p>}
           </div>
 
           <div className="col-span-2 pb-5 text-left">
@@ -273,6 +295,7 @@ const RegisterNewUser = () => {
               <option value="RM 500,001 - RM 1,000,000">RM 500,001 - RM 1,000,000</option>
               <option value="Above RM 1,000,000">Above RM 1,000,000</option>
             </select>
+            {errorMessage.salesVolume && <p className="text-red-500 text-left">{errorMessage.salesVolume}</p>}
           </div>
 
         </div>
