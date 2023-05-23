@@ -19,8 +19,8 @@ const RegisterNewUser = () => {
     businessTaxId: "",
     numberOfEmployees: "",
     salesVolume: "",
-    //userPwd: "bangladesh1",
-    //createdBy: userId
+    userPwd: "bangladesh1",
+    createdBy: userId
   }); 
 
   const [errorMessage, setErrorMessage] = useState({
@@ -49,12 +49,10 @@ const RegisterNewUser = () => {
       businessRegNumber: "",
       businessTaxId: "",
       numberOfEmployees: "",
-      salesVolume: "",
-      userPwd: "bangladesh1",
-      createdBy: userId
+      salesVolume: ""
     };
 
-    let validate =true;
+    let validate = true;
 
     if (!formValues.businessName) {
       errors.businessName = "Business name is required";
@@ -136,7 +134,6 @@ const RegisterNewUser = () => {
   const handleSubmit = async (e) => {
 
     e.preventDefault();
-
     if(validate(formValues) === true){
 
       try {
@@ -159,7 +156,7 @@ const RegisterNewUser = () => {
   }
 
   return (
-    <div className=" bg-pink-200 p-5 rounded-md text-center">
+    <div className="bg-pink-200 p-5 rounded-md text-center">
       <h1 className="text-left text-2xl mb-5">Register New User </h1>
 
       <form>

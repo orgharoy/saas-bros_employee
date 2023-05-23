@@ -35,7 +35,7 @@ function App() {
             <Route path="/calendar" element={<Calendar/>} />
             <Route path="/notes" element={<Notes/>} />
 
-            <Route path="/user" element={<User/>} />
+            <Route path="/user/:id" element={<User/>} />
           </Routes>
         </div>
       </div>

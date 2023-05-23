@@ -28,8 +28,6 @@ const ViewUsers = () => {
     setRefreshCount((prevCount) => prevCount + 1);
   };
 
-  console.log(users);
-
   return (
     <div className=" bg-pink-200 p-5 rounded-md">
       <h1 className="text-left">Merchants</h1>

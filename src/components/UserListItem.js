@@ -10,7 +10,7 @@ const UserListItem = ({user}) => {
         <p>{user.businessContactNumber}</p>
         <p className="col-span-2">{user.businessAddress}</p>
         <p>Status</p>
-        <Link to="/user">Visit Page</Link>
+        <Link to={`/user/${user._id}`}>Visit Page</Link>
     </div>
   )
 }
