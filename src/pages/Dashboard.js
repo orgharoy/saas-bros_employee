@@ -1,21 +1,24 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import NewUserCounter from '../components/dashboard/NewUserCounter';
+import Hello from '../components/dashboard/Hello';
+import NewUserAndViewUser from '../components/dashboard/NewUserAndViewUser';
+import LatestFiveUsers from '../components/dashboard/LatestFiveUsers';
 
 const Dashboard = () => {
   return (
     <div className="grid grid-cols-4 w-full gap-5">
 
-      <div className="bg-slate-300 p-5 rounded-md hover:shadow-md" >
-        <h1>Hello User</h1>
+      <div className='rounded-md'>
+        <Hello/>
       </div>
 
-      <div className='col-span-2 grid grid-cols-2 gap-5 bg-slate-300 rounded-md'>
-        <Link className="flex justify-center items-center py-5 pl-5 rounded-md hover:shadow-md"  to="/register-business">Register New User</Link>
-        <Link className="flex justify-center items-center py-5 pl-5 rounded-md hover:shadow-md" to="/businesses">View User List</Link>
+      <div className='col-span-2 rounded-md'>
+        <NewUserAndViewUser/>
       </div>
 
-      <div className="bg-slate-300 p-5 rounded-md hover:shadow-md" >
-        <h1>New Users This Month</h1>
+      <div className="rounded-md">
+        <NewUserCounter/>
       </div>
 
       <div className='col-span-3 flex gap-5 justify-center bg-slate-300 p-5 rounded-md hover:shadow-md'>
@@ -26,8 +29,8 @@ const Dashboard = () => {
         <h1>Calendar</h1>
       </div>
 
-      <div className="row-span-2 bg-slate-300 p-5 rounded-md hover:shadow-md" >
-        <h1>Latest 5 users</h1>
+      <div className="row-span-2" >
+        <LatestFiveUsers />
       </div>
 
       <div className="bg-slate-300 p-5 rounded-md hover:shadow-md" >
