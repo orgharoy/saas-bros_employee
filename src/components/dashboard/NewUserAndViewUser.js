@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 const NewUserAndViewUser = () => {
   return (
-    <div className="py-3 rounded-md border border-purple-400 text-purple-600 h-full grid grid-cols-2 overflow-hidden">
-        <Link className="mx-5 border-r-4 border-r-purple-400 flex items-center relative"  to="/register-business">
+    <div className="py-3 rounded-md border border-purple-1 text-black h-full grid grid-cols-2 overflow-hidden">
+        <Link className="mx-5 border-r-4 border-r-purple-1 flex items-center relative"  to="/register-business">
             <h1 className="text-2xl font-bold z-30">Register New User</h1>
             <span className="absolute -bottom-7 right-0">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="#e9d5ff" className="w-28 h-28">

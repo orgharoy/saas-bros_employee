@@ -21,11 +21,11 @@ const Dashboard = () => {
         <NewUserCounter/>
       </div>
 
-      <div className='col-span-3 flex gap-5 justify-center bg-slate-300 p-5 rounded-md hover:shadow-md'>
+      <div className='col-span-3 flex gap-5 justify-center bg-purple-2 p-5 rounded-md hover:shadow-md'>
         <h1>Graph of New Users in Last 6 Months</h1>
       </div>
 
-      <div className="row-span-2 bg-slate-300 p-5 rounded-md hover:shadow-md" >
+      <div className="row-span-2 bg-purple-2 p-5 rounded-md hover:shadow-md" >
         <h1>Calendar</h1>
       </div>
 
@@ -33,19 +33,19 @@ const Dashboard = () => {
         <LatestFiveUsers />
       </div>
 
-      <div className="bg-slate-300 p-5 rounded-md hover:shadow-md" >
+      <div className="bg-purple-2 p-5 rounded-md hover:shadow-md" >
         <h1>Something Else</h1>
       </div>
 
-      <div className="row-span-2 bg-slate-300 p-5 rounded-md hover:shadow-md" >
+      <div className="row-span-2 bg-purple-2 p-5 rounded-md hover:shadow-md" >
         <h1>Notes</h1>
       </div>
 
-      <div className="bg-slate-300 p-5 rounded-md hover:shadow-md" >
+      <div className="bg-purple-2 p-5 rounded-md hover:shadow-md" >
         <h1>Something Else</h1>
       </div>
 
-      <div className="bg-slate-300 p-5 rounded-md hover:shadow-md" >
+      <div className="bg-purple-2 p-5 rounded-md hover:shadow-md" >
         <h1>Revenue</h1>
       </div>
 
