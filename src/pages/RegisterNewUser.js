@@ -156,7 +156,7 @@ const RegisterNewUser = () => {
   }
 
   return (
-    <div className="bg-pink-200 p-5 rounded-md text-center">
+    <div className="bg-pink-1 p-5 rounded-md text-center">
       <h1 className="text-left text-2xl mb-5">Register New User </h1>
 
       <form>
