@@ -16,7 +16,27 @@ const Topbar = () => {
   }
 
   return (
-    <div className=' px-5 flex justify-end items-center h-12 sticky top-0 z-50'>
+    <div className=' px-5 flex justify-between items-center h-12 sticky top-0 z-50'>
+      <div className="w-full h-fullflex items-center">
+        {/* <form className="w-1/2 h-3/4 flex items-center relative">
+          <input type="text" className=" border-b-2 border-purple-3 px-2 w-full h-full" placeholder="search"/>
+          <button className="absolute right-0">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} className="w-6 h-6 stroke-purple-3">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+            </svg>
+          </button>
+        </form> */}
+      </div>
+      {/* <div class="">
+          <form action="/search" class="w-1/2 px-4">
+              <div class="relative">
+                <input type="text" name="q" class="border shadow p-4 rounded-full" placeholder="search"/>
+                <button type="submit">
+                    
+                </button>
+              </div>
+          </form>
+      </div> */}
       <div className='flex gap-3 items-center z-50'>
 
           <Menu as="div" className="relative inline-block text-left z-50">

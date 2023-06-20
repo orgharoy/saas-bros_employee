@@ -4,16 +4,20 @@ import NewUserCounter from '../components/dashboard/NewUserCounter';
 import Hello from '../components/dashboard/Hello';
 import NewUserAndViewUser from '../components/dashboard/NewUserAndViewUser';
 import LatestFiveUsers from '../components/dashboard/LatestFiveUsers';
+import Calendar from '../components/dashboard/Calendar';
+import Graph from '../components/dashboard/Graph';
+import Notes from '../components/dashboard/Notes';
+import Revenue from '../components/dashboard/Revenue';
 
 const Dashboard = () => {
   return (
-    <div className="grid grid-cols-4 w-full gap-5">
+    <div className="grid grid-cols-1 md:grid-cols-4 w-full gap-5">
 
       <div className='rounded-md'>
         <Hello/>
       </div>
 
-      <div className='col-span-2 rounded-md'>
+      <div className='md:col-span-2 rounded-md'>
         <NewUserAndViewUser/>
       </div>
 
@@ -21,32 +25,24 @@ const Dashboard = () => {
         <NewUserCounter/>
       </div>
 
-      <div className='col-span-3 flex gap-5 justify-center bg-purple-2 p-5 rounded-md hover:shadow-md'>
-        <h1>Graph of New Users in Last 6 Months</h1>
+      <div className='md:col-span-3 '>
+        <Graph/>
       </div>
 
-      <div className="row-span-2 bg-purple-2 p-5 rounded-md hover:shadow-md" >
-        <h1>Calendar</h1>
+      <div className="md:row-span-3" >
+        <Revenue/>
       </div>
 
-      <div className="row-span-2" >
+      <div className="md:row-span-2" >
         <LatestFiveUsers />
       </div>
 
-      <div className="bg-purple-2 p-5 rounded-md hover:shadow-md" >
-        <h1>Something Else</h1>
+      <div className="md:row-span-2" >
+        <Calendar/>
       </div>
 
-      <div className="row-span-2 bg-purple-2 p-5 rounded-md hover:shadow-md" >
-        <h1>Notes</h1>
-      </div>
-
-      <div className="bg-purple-2 p-5 rounded-md hover:shadow-md" >
-        <h1>Something Else</h1>
-      </div>
-
-      <div className="bg-purple-2 p-5 rounded-md hover:shadow-md" >
-        <h1>Revenue</h1>
+      <div className="md:row-span-2" >
+        <Notes/>
       </div>
 
     </div>
