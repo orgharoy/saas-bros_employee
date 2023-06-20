@@ -29,7 +29,7 @@ const ViewUsers = () => {
   };
 
   return (
-    <div className=" bg-pink-200 p-5 rounded-md">
+    <div className="bg-purple-7 p-5 rounded-md">
       <h1 className="text-left">Merchants</h1>
       <div className="flex w-full justify-end mb-5">
         <input placeholder="search" className="px-3 rounded-md"/>
