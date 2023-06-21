@@ -234,24 +234,24 @@ const RegisterNewUser = () => {
       <div className="w-2/4">
         <div className="grid grid-cols-3">
           <div className="flex items-center">
-            <div className="relative w-6 aspect-square bg-purple-3 rounded-full text-white flex items-center justify-center z-30">
+            <div className="relative w-6 aspect-square bg-purple-3 rounded-full text-white flex items-center justify-center z-30 text-sm">
               <p>1</p>
             </div>
             <div className={`w-11/12 h-1 ${page === 1 ? 'bg-purple-9' : 'bg-purple-3'} rounded-md`}></div>
           </div>
           <div className="flex items-center">
-            <div className={`relative w-6 aspect-square ${page === 1 ? 'bg-purple-9' : 'bg-purple-3'} rounded-full text-white flex items-center justify-center z-30`}>
+            <div className={`relative w-6 aspect-square ${page === 1 ? 'bg-purple-9' : 'bg-purple-3'} rounded-full text-white flex items-center justify-center z-30 text-sm`}>
               <p>2</p>
             </div>
             <div className={`w-11/12 h-1 ${page === 1 || page === 2 ? 'bg-purple-9' : 'bg-purple-3'} rounded-md`}></div>
           </div>
           <div className="flex items-center">
-            <div className={`relative w-6 aspect-square ${page === 1 || page === 2 ? 'bg-purple-9' : 'bg-purple-3'} rounded-full text-white flex items-center justify-center z-30`}>
+            <div className={`relative w-6 aspect-square ${page === 1 || page === 2 ? 'bg-purple-9' : 'bg-purple-3'} rounded-full text-white flex items-center justify-center z-30 text-sm`}>
               <p>3</p>
             </div>
             <div className={`w-11/12 h-1 ${page === 1 || page === 2 || page === 3 ? 'bg-purple-9' : 'bg-purple-3'} rounded-md`}></div>
-            <div className={`relative w-6 aspect-square ${page === 1 || page === 2 || page === 3 ? 'bg-purple-9' : 'bg-purple-3'} rounded-full text-white flex items-center justify-center z-30`}>
-              <p>D</p>
+            <div className={`relative w-6 aspect-square ${page === 1 || page === 2 || page === 3 ? 'bg-purple-9' : 'bg-purple-3'} rounded-full text-white flex items-center justify-center z-30 text-sm`}>
+              <p>L</p>
             </div>
           </div>
         </div>
