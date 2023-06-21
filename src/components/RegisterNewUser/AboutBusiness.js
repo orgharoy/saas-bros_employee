@@ -26,7 +26,15 @@ const AboutBusiness = ({formValues, setFormValues}) => {
             <label htmlFor="businessName">Company Type: </label>
           </div>
           <div className="col-span-3">
-            <h1>World</h1>
+            <select name="businessType" id="businessType" className="w-full border border-purple-9">
+               <option>Select Business Type</option>
+               <option value="Partnership">Partnership</option>
+               <option value="Private Limited Company">Private Limited Company</option>
+               <option value="Public Limited Company">Public Limited Company</option>
+               <option value="Unlimited Company">Unlimited Company</option>
+               <option value="htmlForeign Company">Foreign Company</option>
+               <option value="Limited Liability Partnership">Limited Liability Partnership</option>
+             </select>
           </div>
 
         </div>
