@@ -18,7 +18,7 @@ const AboutBusiness = ({formValues, setFormValues}) => {
             <label htmlFor="businessDescription">Description of Business: </label>
           </div>
           <div className="col-span-3 mb-5">
-            <textarea id="businessDescription" rows="4" class="w-full border border-purple-9 rounded-sm" placeholder="Write your thoughts here..."></textarea>
+            <textarea id="businessDescription" rows="4" class="w-full border border-purple-9 rounded-sm" placeholder="Write your thoughts here..." value={formValues.businessDescription} onChange={(e) => setFormValues({...formValues, businessDescription:e.target.value})}></textarea>
           </div>
 
           <div className="col-span-1 mb-5">
@@ -32,21 +32,21 @@ const AboutBusiness = ({formValues, setFormValues}) => {
             <label htmlFor="businessContactNumber">Business Phone:</label>
           </div>
           <div className="col-span-3 mb-5">
-            <input type="tel" name="businessContactNumber" id="businessContactNumber" value={formValues.businessContactNumber} onChange={(e) => setFormValues({...formValues, businessContactNumber:e.target.value})}  className="w-full border border-purple-9 rounded-sm"/>
+            <input type="tel" name="businessContactNumber" id="businessContactNumber" value={formValues.businessPhone} onChange={(e) => setFormValues({...formValues, businessPhone:e.target.value})}  className="w-full border border-purple-9 rounded-sm"/>
           </div>
 
           <div className="col-span-1 mb-5">
-            <label htmlFor="businessAddress">Business Address:</label>
+            <label htmlFor="businessAddress1">Business Address:</label>
           </div>
           <div className="col-span-3 mb-5 grid grid-cols-5 gap-1">
-            <input type="text" name="businessAddress" id="businessAddress" value={formValues.businessAddress} onChange={(e) => setFormValues({...formValues, businessAddress:e.target.value})}  className="w-full border border-purple-9 rounded-sm col-span-5" placeholder="Address Line 1"/>
-            <input type="text" name="businessAddress" id="businessAddress" value={formValues.businessAddress} onChange={(e) => setFormValues({...formValues, businessAddress:e.target.value})}  className="w-full border border-purple-9 rounded-sm col-span-3" placeholder="Address Line 2"/>
-            <input type="text" name="businessAddress" id="businessAddress" value={formValues.businessAddress} onChange={(e) => setFormValues({...formValues, businessAddress:e.target.value})}  className="w-full border border-purple-9 rounded-sm col-span-2" placeholder="City"/>
-            <input type="text" name="businessAddress" id="businessAddress" value={formValues.businessAddress} onChange={(e) => setFormValues({...formValues, businessAddress:e.target.value})}  className="w-full border border-purple-9 rounded-sm col-span-2" placeholder="State"/>
-            <input type="text" name="businessAddress" id="businessAddress" value={formValues.businessAddress} onChange={(e) => setFormValues({...formValues, businessAddress:e.target.value})}  className="w-full border border-purple-9 rounded-sm col-span-1" placeholder="Zipcode"/>
-            <select name="numberOfEmployees" id="numberOfEmployees" value={formValues.numberOfEmployees} onChange={(e) => setFormValues({...formValues, numberOfEmployees:e.target.value})} className="w-full col-span-2">
+            <input type="text" name="businessAddress1" id="businessAddress1" value={formValues.businessAddress1} onChange={(e) => setFormValues({...formValues, businessAddress1:e.target.value})}  className="w-full border border-purple-9 rounded-sm col-span-5" placeholder="Address Line 1"/>
+            <input type="text" name="businessAddress2" id="businessAddress2" value={formValues.businessAddress2} onChange={(e) => setFormValues({...formValues, businessAddress2:e.target.value})}  className="w-full border border-purple-9 rounded-sm col-span-3" placeholder="Address Line 2"/>
+            <input type="text" name="businessCity" id="businessCity" value={formValues.businessCity} onChange={(e) => setFormValues({...formValues, businessCity:e.target.value})}  className="w-full border border-purple-9 rounded-sm col-span-2" placeholder="City"/>
+            <input type="text" name="businessState" id="businessState" value={formValues.businessState} onChange={(e) => setFormValues({...formValues, businessState:e.target.value})}  className="w-full border border-purple-9 rounded-sm col-span-2" placeholder="State"/>
+            <input type="text" name="businessZipcode" id="businessZipcode" value={formValues.businessZipcode} onChange={(e) => setFormValues({...formValues, businessZipcode:e.target.value})}  className="w-full border border-purple-9 rounded-sm col-span-1" placeholder="Zipcode"/>
+            <select name="businessCountry" id="businessCountry" value={formValues.businessCountry} onChange={(e) => setFormValues({...formValues, businessCountry:e.target.value})} className="w-full col-span-2">
               <option>Country</option>
-              <option value="Under 10">Malaysia</option>
+              <option value="Malaysia">Malaysia</option>
             </select>
           </div>
 

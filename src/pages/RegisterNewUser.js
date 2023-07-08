@@ -3,9 +3,11 @@ import axios from 'axios';
 
 import AboutBusiness from '../components/RegisterNewUser/AboutBusiness.js';
 import AboutMerchant from '../components/RegisterNewUser/AboutMerchant.js';
+import BusinessDetails from '../components/RegisterNewUser/BusinessDetails.js';
+import ConfirmNewUser from '../components/RegisterNewUser/ConfirmNewUser.js';
 
 import { UserContext } from '../userContext.js';
-import BusinessDetails from '../components/RegisterNewUser/BusinessDetails.js';
+
 
 const RegisterNewUser = () => {
   const [page, setPage] = useState(1);
@@ -14,18 +16,30 @@ const RegisterNewUser = () => {
 
   const [formValues, setFormValues] = useState({
     businessName: "",
-    businessType: "",
-    ownerName: "",
-    ownerContactNumber: "",
+    businessDescription: "",
     businessEmail: "",
-    businessContactNumber: "",
-    businessAddress: "",
+    businessPhone: "",
+    businessAddress1: "",
+    businessAddress2: "",
+    businessCity: "",
+    businessState: "",
+    businessZipcode: "",
+    businessCountry: "",
     businessRegNumber: "",
     businessTaxId: "",
-    numberOfEmployees: "",
-    salesVolume: "",
-    userPwd: "bangladesh1",
-    createdBy: userId
+    businessType: "Partnership",
+    businessSize: "Under 10",
+    businessSalesVolume: "Below RM 100k",
+
+    merchantName: "",
+    merchantEmail: "",
+    merchantPhone: "",
+    merchantAddress1: "",
+    merchantAddress2: "",
+    merchantCity: "",
+    merchantState: "",
+    merchantZipcode: "",
+    merchantCountry: ""
   }); 
 
   const [errorMessage, setErrorMessage] = useState({
@@ -169,6 +183,8 @@ const RegisterNewUser = () => {
       return(<BusinessDetails formValues={formValues} setFormValues={setFormValues} />)
     } else if(page === 3){
       return(<AboutMerchant  formValues={formValues} setFormValues={setFormValues} />)
+    } else if(page === 4){
+      return(<ConfirmNewUser  formValues={formValues} setFormValues={setFormValues} />)
     } else {
       return (<h1>There was an Error {page}</h1>)
     }
