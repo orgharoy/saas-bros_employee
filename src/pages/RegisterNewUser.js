@@ -5,6 +5,7 @@ import AboutBusiness from '../components/RegisterNewUser/AboutBusiness.js';
 import AboutMerchant from '../components/RegisterNewUser/AboutMerchant.js';
 
 import { UserContext } from '../userContext.js';
+import BusinessDetails from '../components/RegisterNewUser/BusinessDetails.js';
 
 const RegisterNewUser = () => {
   const [page, setPage] = useState(1);
@@ -165,7 +166,9 @@ const RegisterNewUser = () => {
     if(page === 1){
       return(<AboutBusiness formValues={formValues} setFormValues={setFormValues} />)
     } else if(page === 2){
-      return(<AboutMerchant formValues={formValues} setFormValues={setFormValues} />)
+      return(<BusinessDetails formValues={formValues} setFormValues={setFormValues} />)
+    } else if(page === 3){
+      return(<AboutMerchant  formValues={formValues} setFormValues={setFormValues} />)
     } else {
       return (<h1>There was an Error {page}</h1>)
     }

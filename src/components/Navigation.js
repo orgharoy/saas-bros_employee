@@ -4,7 +4,7 @@ import repeatifylogo from '../images/repeatifylogo.png';
 
 const Navigation = () => {
   return (
-    <div className="h-screen bg-gradient-to-br from-purple-1 to-purple-4 sticky top-12 text-white z-50 overflow-hidden" >
+    <div className="bg-gradient-to-br from-purple-1 to-purple-4 text-white sticky top-0 h-screen z-50 overflow-hidden" >
       <div className="h-12 px-5 flex items-center">
         <Link to="/" className="flex items-center gap-2">
           <img src={repeatifylogo} className="w-[80%]" alt="Repeatify Logo" />

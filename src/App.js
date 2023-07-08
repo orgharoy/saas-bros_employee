@@ -19,7 +19,6 @@ function App() {
   const location = useLocation();
 
   return (
-    
       <div className="grid grid-cols-6 w-screen bg-white">
         <div className="col-span-1">
           { location.pathname !== '/login' && <Navigation /> }
