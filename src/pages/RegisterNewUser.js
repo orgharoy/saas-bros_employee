@@ -44,31 +44,59 @@ const RegisterNewUser = () => {
 
   const [errorMessage, setErrorMessage] = useState({
     businessName: "",
-    businessType: "",
-    ownerName: "",
-    ownerContactNumber: "",
+    businessDescription: "",
     businessEmail: "",
-    businessContactNumber: "",
-    businessAddress: "",
+    businessPhone: "",
+    businessAddress1: "",
+    businessAddress2: "",
+    businessCity: "",
+    businessState: "",
+    businessZipcode: "",
+    businessCountry: "",
     businessRegNumber: "",
     businessTaxId: "",
-    numberOfEmployees: "",
-    salesVolume: ""
+    businessType: "Partnership",
+    businessSize: "Under 10",
+    businessSalesVolume: "Below RM 100k",
+
+    merchantName: "",
+    merchantEmail: "",
+    merchantPhone: "",
+    merchantAddress1: "",
+    merchantAddress2: "",
+    merchantCity: "",
+    merchantState: "",
+    merchantZipcode: "",
+    merchantCountry: ""
   });
 
   const validate = (formValues) => {
     let errors = {
       businessName: "",
-      businessType: "",
-      ownerName: "",
-      ownerContactNumber: "",
-      businessEmail: "",
-      businessContactNumber: "",
-      businessAddress: "",
-      businessRegNumber: "",
-      businessTaxId: "",
-      numberOfEmployees: "",
-      salesVolume: ""
+    businessDescription: "",
+    businessEmail: "",
+    businessPhone: "",
+    businessAddress1: "",
+    businessAddress2: "",
+    businessCity: "",
+    businessState: "",
+    businessZipcode: "",
+    businessCountry: "",
+    businessRegNumber: "",
+    businessTaxId: "",
+    businessType: "Partnership",
+    businessSize: "Under 10",
+    businessSalesVolume: "Below RM 100k",
+
+    merchantName: "",
+    merchantEmail: "",
+    merchantPhone: "",
+    merchantAddress1: "",
+    merchantAddress2: "",
+    merchantCity: "",
+    merchantState: "",
+    merchantZipcode: "",
+    merchantCountry: ""
     };
 
     let validate = true;
