@@ -8,6 +8,7 @@ module.exports = {
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
+      "red": "#FF0000",
       "white" : "#ffffff",
       "black": "#423f61",
       "purple": {   

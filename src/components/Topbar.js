@@ -16,7 +16,7 @@ const Topbar = () => {
   }
 
   return (
-    <div className=' px-5 flex justify-between items-center h-12 sticky top-0 z-50'>
+    <div className=' px-5 flex justify-between items-center h-12 sticky top-0 z-50 bg-purple-9'>
       <div className="w-full h-fullflex items-center">
         {/* <form className="w-1/2 h-3/4 flex items-center relative">
           <input type="text" className=" border-b-2 border-purple-3 px-2 w-full h-full" placeholder="search"/>
