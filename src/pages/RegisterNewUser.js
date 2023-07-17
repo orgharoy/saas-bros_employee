@@ -9,7 +9,7 @@ import ConfirmNewUser from '../components/RegisterNewUser/ConfirmNewUser.js';
 import { UserContext } from '../userContext.js';
 
 
-const RegisterNewUser = () => {
+const RegisterNewUser = ({setModal, setUser}) => {
   const [page, setPage] = useState(1);
 
   const { userId, setUserId } = useContext(UserContext);
@@ -242,25 +242,13 @@ const RegisterNewUser = () => {
   const handleSubmit = async (e) => {
 
     e.preventDefault();
-    // if(validate(formValues) === true){
-
-    //   try {
-    //     const response = await axios.post('http://localhost:3001/emp/create-merchant', formValues);
-    //     console.log(response);
-    //   } catch (error) {
-    //     console.error(error);
-    //   }
-
-    // } else {
-    //   console.log(errorMessage);
-    // }
-  }
-
-
-  const cancelButton = (e) => {
-    e.preventDefault();
-    setFormValues({businessName: "", businessType: "", ownerName: "", ownerContactNumber: "", businessEmail: "", businessContactNumber: "", businessAddress: "", businessRegNumber: "", businessTaxId: "", numberOfEmployees: "", salesVolume: ""})
-    setErrorMessage("");
+    
+    try{
+      const response = await axios.post('http://localhost:3001/emp/create-merchant', formValues);
+      setUser(response);
+    }catch(error) {
+      console.log(error)
+    }
   }
 
 //////////////////////////////////////////////////////
@@ -273,7 +261,7 @@ const RegisterNewUser = () => {
     } else if(page === 3){
       return(<AboutMerchant  formValues={formValues} setFormValues={setFormValues} errorMessage={errorMessage}/>)
     } else if(page === 4){
-      return(<ConfirmNewUser  formValues={formValues} setFormValues={setFormValues} />)
+      return(<ConfirmNewUser  formValues={formValues} setFormValues={setFormValues}/>)
     } else {
       return (<h1>There was an Error {page}</h1>)
     }
@@ -331,7 +319,7 @@ const RegisterNewUser = () => {
     }
     else if(page === 4){
       return(
-        <div className="bg-purple-1 text-white p-2 rounded mx-2 cursor-pointer" onClick={()=>{setPage((page) => page - 1);}}>
+        <div className="bg-purple-1 text-white p-2 rounded mx-2 cursor-pointer" onClick={()=>{setModal(true);}}>
           <p>Create User</p>
         </div>
       )
