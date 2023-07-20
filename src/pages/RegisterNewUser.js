@@ -10,6 +10,7 @@ import { UserContext } from '../userContext.js';
 
 
 const RegisterNewUser = ({setModal, setUser}) => {
+  const token = localStorage.getItem('jwtToken');
   const [page, setPage] = useState(1);
 
   const { userId, setUserId } = useContext(UserContext);
@@ -242,10 +243,15 @@ const RegisterNewUser = ({setModal, setUser}) => {
   const handleSubmit = async (e) => {
 
     e.preventDefault();
+    setModal(true);
     
     try{
-      const response = await axios.post('http://localhost:3001/emp/create-merchant', formValues);
-      setUser(response);
+      const response = await axios.post('https://saasproj.bsite.net/api/Admin/create-merchant', formValues, {
+        headers: {
+            Authorization: `Bearer ${token}`
+          }
+      });
+      console.log(response.data);
     }catch(error) {
       console.log(error)
     }
@@ -319,7 +325,7 @@ const RegisterNewUser = ({setModal, setUser}) => {
     }
     else if(page === 4){
       return(
-        <div className="bg-purple-1 text-white p-2 rounded mx-2 cursor-pointer" onClick={()=>{setModal(true);}}>
+        <div className="bg-purple-1 text-white p-2 rounded mx-2 cursor-pointer" onClick={handleSubmit}>
           <p>Create User</p>
         </div>
       )
@@ -331,7 +337,7 @@ const RegisterNewUser = ({setModal, setUser}) => {
       )
     }
   }
-
+  
   return (
     <div className="border border-purple-9 rounded-md p-5 flex flex-col items-center">
       

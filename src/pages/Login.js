@@ -31,12 +31,13 @@ const Login = () => {
     if (isValid()) {
       try {
         const response = await axios.post('https://saasproj.bsite.net/api/auth/login', formValues);
-        console.log(response.data);
+        //console.log(response.data.token);
+        const token = response.data.token;
         //const { token, employee } = response.data;
-        //localStorage.setItem('jwtToken', token);
+        localStorage.setItem('jwtToken', token);
         //setUserId(employee._id);
         
-        //navigate('/');
+        navigate('/');
       } catch (error) {
         console.error(error);
       }
