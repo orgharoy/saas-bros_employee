@@ -33,27 +33,16 @@ const Login = () => {
     e.preventDefault();
     if (isValid()) {
       try {
-<<<<<<< HEAD
         const response = await axios.post(
           "https://saasproj.bsite.net/api/auth/login",
           formValues
         );
         console.log(response.data);
-=======
-        const response = await axios.post('https://saasproj.bsite.net/api/auth/login', formValues);
         //console.log(response.data.token);
-        const token = response.data.token;
->>>>>>> 8777c3dc3e765af2b0cef0da9282ed5797a66fdb
         //const { token, employee } = response.data;
-        localStorage.setItem('jwtToken', token);
         //setUserId(employee._id);
-<<<<<<< HEAD
 
         //navigate('/');
-=======
-        
-        navigate('/');
->>>>>>> 8777c3dc3e765af2b0cef0da9282ed5797a66fdb
       } catch (error) {
         console.error(error);
       }

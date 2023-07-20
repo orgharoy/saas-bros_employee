@@ -8,13 +8,7 @@ import ConfirmNewUser from "../components/RegisterNewUser/ConfirmNewUser.js";
 
 import { UserContext } from "../userContext.js";
 
-<<<<<<< HEAD
 const RegisterNewUser = ({ setModal, setUser }) => {
-=======
-
-const RegisterNewUser = ({setModal, setUser}) => {
-  const token = localStorage.getItem('jwtToken');
->>>>>>> 8777c3dc3e765af2b0cef0da9282ed5797a66fdb
   const [page, setPage] = useState(1);
 
   const { userId, setUserId } = useContext(UserContext);
@@ -246,7 +240,6 @@ const RegisterNewUser = ({setModal, setUser}) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-<<<<<<< HEAD
 
     try {
       const response = await axios.post(
@@ -256,19 +249,6 @@ const RegisterNewUser = ({setModal, setUser}) => {
       setUser(response);
     } catch (error) {
       console.log(error);
-=======
-    setModal(true);
-    
-    try{
-      const response = await axios.post('https://saasproj.bsite.net/api/Admin/create-merchant', formValues, {
-        headers: {
-            Authorization: `Bearer ${token}`
-          }
-      });
-      console.log(response.data);
-    }catch(error) {
-      console.log(error)
->>>>>>> 8777c3dc3e765af2b0cef0da9282ed5797a66fdb
     }
   };
 
@@ -363,7 +343,6 @@ const RegisterNewUser = ({setModal, setUser}) => {
   const ConfirmButton = () => {
     if (page === 1 || page === 2 || page === 3) {
       return;
-<<<<<<< HEAD
     } else if (page === 4) {
       return (
         <div
@@ -372,12 +351,6 @@ const RegisterNewUser = ({setModal, setUser}) => {
             setModal(true);
           }}
         >
-=======
-    }
-    else if(page === 4){
-      return(
-        <div className="bg-purple-1 text-white p-2 rounded mx-2 cursor-pointer" onClick={handleSubmit}>
->>>>>>> 8777c3dc3e765af2b0cef0da9282ed5797a66fdb
           <p>Create User</p>
         </div>
       );
@@ -388,13 +361,8 @@ const RegisterNewUser = ({setModal, setUser}) => {
         </div>
       );
     }
-<<<<<<< HEAD
   };
 
-=======
-  }
-  
->>>>>>> 8777c3dc3e765af2b0cef0da9282ed5797a66fdb
   return (
     <div className="border border-purple-9 rounded-md p-5 flex flex-col items-center">
       <div className="w-2/4">
