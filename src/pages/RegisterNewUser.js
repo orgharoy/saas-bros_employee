@@ -1,15 +1,14 @@
-import React, { useState, useContext } from 'react';
-import axios from 'axios';
+import React, { useState, useContext } from "react";
+import axios from "axios";
 
-import AboutBusiness from '../components/RegisterNewUser/AboutBusiness.js';
-import AboutMerchant from '../components/RegisterNewUser/AboutMerchant.js';
-import BusinessDetails from '../components/RegisterNewUser/BusinessDetails.js';
-import ConfirmNewUser from '../components/RegisterNewUser/ConfirmNewUser.js';
+import AboutBusiness from "../components/RegisterNewUser/AboutBusiness.js";
+import AboutMerchant from "../components/RegisterNewUser/AboutMerchant.js";
+import BusinessDetails from "../components/RegisterNewUser/BusinessDetails.js";
+import ConfirmNewUser from "../components/RegisterNewUser/ConfirmNewUser.js";
 
-import { UserContext } from '../userContext.js';
+import { UserContext } from "../userContext.js";
 
-
-const RegisterNewUser = ({setModal, setUser}) => {
+const RegisterNewUser = ({ setModal, setUser }) => {
   const [page, setPage] = useState(1);
 
   const { userId, setUserId } = useContext(UserContext);
@@ -39,8 +38,8 @@ const RegisterNewUser = ({setModal, setUser}) => {
     merchantCity: "",
     merchantState: "",
     merchantZipcode: "",
-    merchantCountry: ""
-  }); 
+    merchantCountry: "",
+  });
 
   const [errorMessage, setErrorMessage] = useState({
     businessName: "",
@@ -67,7 +66,7 @@ const RegisterNewUser = ({setModal, setUser}) => {
     merchantCity: "",
     merchantState: "",
     merchantZipcode: "",
-    merchantCountry: ""
+    merchantCountry: "",
   });
 
   const validate = () => {
@@ -95,139 +94,139 @@ const RegisterNewUser = ({setModal, setUser}) => {
       merchantCity: "",
       merchantState: "",
       merchantZipcode: "",
-      merchantCountry: ""
+      merchantCountry: "",
     };
 
     let isValid = true;
 
-    if(page === 1){
-
-      if(!formValues.businessName || formValues.businessName === ""){
+    if (page === 1) {
+      if (!formValues.businessName || formValues.businessName === "") {
         errors.businessName = "Business name is required";
         isValid = false;
       }
-  
+
       if (!formValues.businessEmail || formValues.businessEmail === "") {
         errors.businessEmail = "Business emailis required";
         isValid = false;
-      } else if (!formValues.businessEmail.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+      } else if (
+        !formValues.businessEmail.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)
+      ) {
         errors.businessEmail = "Invalid email address";
         isValid = false;
       }
-  
+
       if (!formValues.businessPhone) {
         errors.businessPhone = "Business contact number is required";
         isValid = false;
       } else if (!formValues.businessPhone.match(/[0-9]+$/)) {
-        errors.businessPhone = "Invalid contact number. Please enter only numbers";
+        errors.businessPhone =
+          "Invalid contact number. Please enter only numbers";
         isValid = false;
       } else if (!formValues.businessPhone.match(/^\+?60[0-9]+$/)) {
-        errors.businessPhone = "Invalid contact number. Enter Country Code (+60)";
+        errors.businessPhone =
+          "Invalid contact number. Enter Country Code (+60)";
         isValid = false;
       }
-  
+
       if (!formValues.businessAddress1) {
         errors.businessAddress1 = "Business Address is required";
         isValid = false;
       }
-  
+
       if (!formValues.businessAddress2) {
         errors.businessAddress2 = "Business Address is required";
         isValid = false;
       }
-  
+
       if (!formValues.businessCity) {
         errors.businessCity = "Business Address is required";
         isValid = false;
       }
-  
+
       if (!formValues.businessState) {
         errors.businessState = "Business Address is required";
         isValid = false;
       }
-  
+
       if (!formValues.businessZipcode) {
         errors.businessZipcode = "Business Address is required";
         isValid = false;
       }
-  
+
       if (!formValues.businessCountry) {
         errors.businessCountry = "Business Address is required";
         isValid = false;
       }
     }
 
-    if(page === 2){
-
+    if (page === 2) {
       if (!formValues.businessRegNumber) {
         errors.businessRegNumber = "Business Registration Number is required";
         isValid = false;
       }
-  
+
       if (!formValues.businessTaxId) {
         errors.businessTaxId = "Business TAX ID is required";
         isValid = false;
       }
-  
+
       if (!formValues.businessType) {
         errors.businessType = "Business Type is required";
         isValid = false;
       }
-  
+
       if (!formValues.businessSize) {
         errors.businessSize = "Business Size is required";
         isValid = false;
       }
-  
+
       if (!formValues.businessSalesVolume) {
         errors.businessSalesVolume = "Business Sales Volume is required";
         isValid = false;
       }
-  
     }
-    
-    if(page === 3){
 
+    if (page === 3) {
       if (!formValues.merchantName) {
         errors.merchantName = "Merchant Name is required";
         isValid = false;
       }
-  
+
       if (!formValues.merchantEmail) {
         errors.merchantEmail = "Merchant Email is required";
         isValid = false;
       }
-  
+
       if (!formValues.merchantPhone) {
         errors.merchantPhone = "Merchant Phone is required";
         isValid = false;
       }
-  
+
       if (!formValues.merchantAddress1) {
         errors.merchantAddress1 = "Merchant Address is required";
         isValid = false;
       }
-  
+
       if (!formValues.merchantAddress2) {
         errors.merchantAddress2 = "Merchant Address is required";
         isValid = false;
       }
-  
+
       if (!formValues.merchantCity) {
         errors.merchantCity = "Merchant Address is required";
         isValid = false;
       }
-  
+
       if (!formValues.merchantState) {
         errors.merchantState = "Merchant Address is required";
         isValid = false;
       }
-  
+
       if (!formValues.merchantZipcode) {
         errors.merchantZipcode = "Merchant Address is required";
         isValid = false;
       }
-  
+
       if (!formValues.merchantCountry) {
         errors.merchantCountry = "Merchant Address is required";
         isValid = false;
@@ -237,133 +236,190 @@ const RegisterNewUser = ({setModal, setUser}) => {
     setErrorMessage(errors);
 
     return isValid;
-  }
+  };
 
   const handleSubmit = async (e) => {
-
     e.preventDefault();
-    
-    try{
-      const response = await axios.post('http://localhost:3001/emp/create-merchant', formValues);
-      setUser(response);
-    }catch(error) {
-      console.log(error)
-    }
-  }
 
-//////////////////////////////////////////////////////
+    try {
+      const response = await axios.post(
+        "http://localhost:3001/emp/create-merchant",
+        formValues
+      );
+      setUser(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  //////////////////////////////////////////////////////
 
   const FormDisplay = () => {
-    if(page === 1){
-      return(<AboutBusiness formValues={formValues} setFormValues={setFormValues} errorMessage={errorMessage}/>)
-    } else if(page === 2){
-      return(<BusinessDetails formValues={formValues} setFormValues={setFormValues} errorMessage={errorMessage}/>)
-    } else if(page === 3){
-      return(<AboutMerchant  formValues={formValues} setFormValues={setFormValues} errorMessage={errorMessage}/>)
-    } else if(page === 4){
-      return(<ConfirmNewUser  formValues={formValues} setFormValues={setFormValues}/>)
+    if (page === 1) {
+      return (
+        <AboutBusiness
+          formValues={formValues}
+          setFormValues={setFormValues}
+          errorMessage={errorMessage}
+        />
+      );
+    } else if (page === 2) {
+      return (
+        <BusinessDetails
+          formValues={formValues}
+          setFormValues={setFormValues}
+          errorMessage={errorMessage}
+        />
+      );
+    } else if (page === 3) {
+      return (
+        <AboutMerchant
+          formValues={formValues}
+          setFormValues={setFormValues}
+          errorMessage={errorMessage}
+        />
+      );
+    } else if (page === 4) {
+      return (
+        <ConfirmNewUser formValues={formValues} setFormValues={setFormValues} />
+      );
     } else {
-      return (<h1>There was an Error {page}</h1>)
+      return <h1>There was an Error {page}</h1>;
     }
   };
 
   const nextPage = () => {
-    if(validate() === true){
-      setPage(page + 1)
+    if (validate() === true) {
+      setPage(page + 1);
     } else {
       return;
     }
-  }
+  };
 
-   const ForwardButton = () => {
-    if(page === 1 || page === 2 || page=== 3){
-      return(
-        <div className="bg-green text-white p-2 rounded mx-2 cursor-pointer" onClick={nextPage}>
+  const ForwardButton = () => {
+    if (page === 1 || page === 2 || page === 3) {
+      return (
+        <div
+          className="bg-green text-white p-2 rounded mx-2 cursor-pointer"
+          onClick={nextPage}
+        >
           <h1>Next</h1>
         </div>
-      )
-    }
-    else if(page=== 4){
+      );
+    } else if (page === 4) {
       return;
     } else {
-      return(
+      return (
         <div className="bg-purple-6 text-white p-2 rounded mx-2 cursor-pointer">
           <p>Fuckity Fuck</p>
         </div>
-      )
+      );
     }
-   }
+  };
 
   const BackButton = () => {
-    if(page=== 1){
+    if (page === 1) {
       return;
-    }
-    else if(page === 2 || page=== 3 || page=== 4){
-      return(
-        <div className="bg-purple-1 text-white p-2 rounded mx-2 cursor-pointer" onClick={()=>{setPage((page) => page - 1);}}>
+    } else if (page === 2 || page === 3 || page === 4) {
+      return (
+        <div
+          className="bg-purple-1 text-white p-2 rounded mx-2 cursor-pointer"
+          onClick={() => {
+            setPage((page) => page - 1);
+          }}
+        >
           <p>Back</p>
         </div>
-      )
+      );
     } else {
-      return(
+      return (
         <div className="bg-purple-6 text-white p-2 rounded mx-2 cursor-pointer">
           <p>Fuckity Fuck</p>
         </div>
-      )
+      );
     }
-  }
+  };
 
   const ConfirmButton = () => {
-    if(page=== 1 || page === 2 || page=== 3){
+    if (page === 1 || page === 2 || page === 3) {
       return;
-    }
-    else if(page === 4){
-      return(
-        <div className="bg-purple-1 text-white p-2 rounded mx-2 cursor-pointer" onClick={()=>{setModal(true);}}>
+    } else if (page === 4) {
+      return (
+        <div
+          className="bg-purple-1 text-white p-2 rounded mx-2 cursor-pointer"
+          onClick={() => {
+            setModal(true);
+          }}
+        >
           <p>Create User</p>
         </div>
-      )
+      );
     } else {
-      return(
+      return (
         <div className="bg-purple-6 text-white p-2 rounded mx-2 cursor-pointer">
           <p>Fuckity Fuck</p>
         </div>
-      )
+      );
     }
-  }
+  };
 
   return (
     <div className="border border-purple-9 rounded-md p-5 flex flex-col items-center">
-      
       <div className="w-2/4">
         <div className="grid grid-cols-3">
           <div className="flex items-center">
             <div className="relative w-6 aspect-square bg-purple-3 rounded-full text-white flex items-center justify-center z-30 text-sm">
               <p>1</p>
             </div>
-            <div className={`w-11/12 h-1 ${page === 1 ? 'bg-purple-9' : 'bg-purple-3'} rounded-md`}></div>
+            <div
+              className={`w-11/12 h-1 ${
+                page === 1 ? "bg-purple-9" : "bg-purple-3"
+              } rounded-md`}
+            ></div>
           </div>
           <div className="flex items-center">
-            <div className={`relative w-6 aspect-square ${page === 1 ? 'bg-purple-9' : 'bg-purple-3'} rounded-full text-white flex items-center justify-center z-30 text-sm`}>
+            <div
+              className={`relative w-6 aspect-square ${
+                page === 1 ? "bg-purple-9" : "bg-purple-3"
+              } rounded-full text-white flex items-center justify-center z-30 text-sm`}
+            >
               <p>2</p>
             </div>
-            <div className={`w-11/12 h-1 ${page === 1 || page === 2 ? 'bg-purple-9' : 'bg-purple-3'} rounded-md`}></div>
+            <div
+              className={`w-11/12 h-1 ${
+                page === 1 || page === 2 ? "bg-purple-9" : "bg-purple-3"
+              } rounded-md`}
+            ></div>
           </div>
           <div className="flex items-center">
-            <div className={`relative w-6 aspect-square ${page === 1 || page === 2 ? 'bg-purple-9' : 'bg-purple-3'} rounded-full text-white flex items-center justify-center z-30 text-sm`}>
+            <div
+              className={`relative w-6 aspect-square ${
+                page === 1 || page === 2 ? "bg-purple-9" : "bg-purple-3"
+              } rounded-full text-white flex items-center justify-center z-30 text-sm`}
+            >
               <p>3</p>
             </div>
-            <div className={`w-11/12 h-1 ${page === 1 || page === 2 || page === 3 ? 'bg-purple-9' : 'bg-purple-3'} rounded-md`}></div>
-            <div className={`relative w-6 aspect-square ${page === 1 || page === 2 || page === 3 ? 'bg-purple-9' : 'bg-purple-3'} rounded-full text-white flex items-center justify-center z-30 text-sm`}>
+            <div
+              className={`w-11/12 h-1 ${
+                page === 1 || page === 2 || page === 3
+                  ? "bg-purple-9"
+                  : "bg-purple-3"
+              } rounded-md`}
+            ></div>
+            <div
+              className={`relative w-6 aspect-square ${
+                page === 1 || page === 2 || page === 3
+                  ? "bg-purple-9"
+                  : "bg-purple-3"
+              } rounded-full text-white flex items-center justify-center z-30 text-sm`}
+            >
               <p>L</p>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="w-full">
-        {FormDisplay()}
-      </div>
+      <div className="w-full">{FormDisplay()}</div>
 
       <div className="flex justify-center">
         {BackButton()}
@@ -371,7 +427,7 @@ const RegisterNewUser = ({setModal, setUser}) => {
         {ConfirmButton()}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default RegisterNewUser
+export default RegisterNewUser;
