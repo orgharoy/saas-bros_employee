@@ -8,7 +8,7 @@ import ConfirmNewUser from "../components/RegisterNewUser/ConfirmNewUser.js";
 
 import { UserContext } from "../userContext.js";
 
-const RegisterNewUser = ({ setModal, setUser }) => {
+const RegisterNewUser = ({ setModal, setNewMerchant }) => {
   const [page, setPage] = useState(1);
 
   const { userId, setUserId } = useContext(UserContext);
@@ -240,13 +240,24 @@ const RegisterNewUser = ({ setModal, setUser }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setModal(true);
+    
+    const token = localStorage.getItem('RepeatifyToken');
 
     try {
       const response = await axios.post(
-        "http://localhost:3001/emp/create-merchant",
-        formValues
+        "https://saasproj.bsite.net/api/admin/create-merchant", formValues, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
       );
-      setUser(response);
+
+      const merchantID = response.data.merchantId
+
+      console.log(merchantID);
+
+      setNewMerchant(merchantID);
     } catch (error) {
       console.log(error);
     }
@@ -345,12 +356,7 @@ const RegisterNewUser = ({ setModal, setUser }) => {
       return;
     } else if (page === 4) {
       return (
-        <div
-          className="bg-purple-1 text-white p-2 rounded mx-2 cursor-pointer"
-          onClick={() => {
-            setModal(true);
-          }}
-        >
+        <div className="bg-purple-1 text-white p-2 rounded mx-2 cursor-pointer" onClick={handleSubmit}>
           <p>Create User</p>
         </div>
       );

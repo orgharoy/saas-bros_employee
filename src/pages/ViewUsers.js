@@ -8,21 +8,27 @@ const ViewUsers = () => {
   const { userId, setUserId } = useContext(UserContext);
   const [users, setUsers] = useState({merchants: []});
   const [refreshCount, setRefreshCount] = useState();
+  const token = localStorage.getItem('RepeatifyToken');
 
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        console.log(userId);
-        const response = await axios.get(`http://localhost:3001/emp/my-merchants/${userId}`);
-        setUsers(response.data);
-        console.log(users);
+        const response = await axios.get(`https://saasproj.bsite.net/api/admin/merchant/list`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+
+        //setUsers(response.data);
+        console.log(response);
+
       } catch (error) {
         console.error(error);
       }
     };
 
     fetchUsers();
-  }, [refreshCount, userId]);
+  }, [refreshCount, token]);
 
   const handleRefresh = () => {
     setRefreshCount((prevCount) => prevCount + 1);

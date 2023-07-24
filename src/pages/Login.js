@@ -37,12 +37,10 @@ const Login = () => {
           "https://saasproj.bsite.net/api/auth/login",
           formValues
         );
-        console.log(response.data);
-        //console.log(response.data.token);
-        //const { token, employee } = response.data;
+        const token = response.data.token
         //setUserId(employee._id);
-
-        //navigate('/');
+        localStorage.setItem('RepeatifyToken', token);
+        navigate('/');
       } catch (error) {
         console.error(error);
       }

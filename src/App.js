@@ -17,7 +17,7 @@ import Modal from "./components/Modal.js";
 
 function App() {
   const [modal, setModal] = useState(false);
-  const [user, setUser] = useState();
+  const [newMerchant, setNewMerchant] = useState();
 
   const location = useLocation();
 
@@ -32,7 +32,7 @@ function App() {
              <Routes>
                <Route path="/login" element={<Login/>} />  
                <Route path="/" element={<Dashboard/>} />
-               <Route path="/register-business" element={<NewUser setModal = {setModal} setUser = {setUser}/>} />
+               <Route path="/register-business" element={<NewUser setModal = {setModal} setNewMerchant = {setNewMerchant}/>} />
                <Route path="/packages" element={<Packages />}/>
                <Route path="/businesses" element={<MyUsers/>} />
                <Route path="/calendar" element={<Calendar/>} />
@@ -44,7 +44,7 @@ function App() {
       </div>
 
       <div className={modal === true ? `w-screen h-screen top-0 left-0 fixed z-50` : `hidden`}>
-        <Modal user={user} setModal={setModal}/>
+        <Modal newMerchant={newMerchant} setModal={setModal}/>
       </div>
     </div>
 

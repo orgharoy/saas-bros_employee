@@ -1,17 +1,25 @@
 import React, {useState, useEffect} from 'react';
 import {useParams} from 'react-router-dom';
 import axios from 'axios';
+import AboutMerchant from '../components/RegisterNewUser/AboutMerchant';
 
 const User = () => {
   const userId = useParams();
-  const [user, setUser] = useState({ user: { user: [] } });
+  const [merchant, setMerchant] = useState([]);
 
   useEffect(() => {
     const fetchUsers = async () => {
+
+      const token = localStorage.getItem('RepeatifyToken');
+
       try {
-        
-        const response = await axios.get(`http://localhost:3001/emp/user/${userId.id}`);
-        setUser(response.data);
+        const response = await axios.get(`https://saasproj.bsite.net/api/admin/merchant/${userId.id}` ,{
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        })
+
+        setMerchant(response.data);
         
       } catch (error) {
         console.error(error);
@@ -22,87 +30,98 @@ const User = () => {
   }, [userId]);
 
   return (
+    
     <div className="p-3 border border-purple-9 rounded-md">
-      <div className="md:grid md:grid-cols-5 border-b border-purple-9 relative">
-        <div className="col-span-1 p-3">
-          <div className="w-full aspect-square bg-orange-4 rounded-full"></div>
-        </div>
-        <div className="col-span-4 p-3"> 
-          <h1 className="text-3xl font-semibold mt-5" >Data-Edge Limited</h1>
-          <p className="text-md font-normal py-2 w-full">Software Development Company</p>
-        </div>
 
-        <button className="bg-purple-4 text-white absolute top-0 right-0 py-1 px-3 rounded-md">Edit Profile</button>
-      
-      </div>
+      {merchant.length <=0 ? (
+        <>
+          <h1>Loading...</h1>
+        </>
+      ) : (
+        <>
+          <div className="md:grid md:grid-cols-5 border-b border-purple-9 relative">
+            <div className="col-span-1 p-3">
+              <div className="w-full aspect-square bg-orange-4 rounded-full"></div>
+            </div>
+            <div className="col-span-4 p-3"> 
+              <h1 className="text-3xl font-semibold mt-5" >{merchant.businessName}</h1>
+              <p className="text-md font-normal py-2 w-full">Software Development Company</p>
+            </div>
+
+            <button className="bg-purple-4 text-white absolute top-0 right-0 py-1 px-3 rounded-md">Edit Profile</button>
+        
+          </div>
 
 
-      <div className="md:grid md:grid-cols-5 p-3">
+          <div className="md:grid md:grid-cols-5 p-3">
 
-        <div className="col-span-1"> 
-          <h1>Business Information</h1>
-        </div>
+            <div className="col-span-1"> 
+              <h1>Business Information</h1>
+            </div>
 
-        <div className="col-span-4 md:grid md:grid-cols-4 mb-2">
+            <div className="col-span-4 md:grid md:grid-cols-4 mb-2">
 
-          <h1 className="col-span-1 mb-2">Business Email:</h1>
-          <p className="col-span-3 mb-2">orgharoy@de.com</p>
+              <h1 className="col-span-1 mb-2">Business Email:</h1>
+              <p className="col-span-3 mb-2">{merchant.businessEmail}</p>
 
-          <h1 className="col-span-1 mb-2">Business Phone:</h1>
-          <p className="col-span-3 mb-2">+60 178-23433</p>
+              <h1 className="col-span-1 mb-2">Business Phone:</h1>
+              <p className="col-span-3 mb-2">{merchant.businessPhone}</p>
 
-          <h1 className="col-span-1 mb-2">Business Description:</h1>
-          <p className="col-span-3 mb-2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Non nihil eligendi, repellat ab quaerat commodi qui distinctio quo nemo officiis adipisci facere maxime provident facilis molestias eos ducimus hic corporis?</p>
+              <h1 className="col-span-1 mb-2">Business Description:</h1>
+              <p className="col-span-3 mb-2">{merchant.businessDescription}</p>
 
-          <h1 className="col-span-1 mb-2">Business Address:</h1>
-          <p className="col-span-3 mb-2">Pantai Hillpark Phase - 5, Bangsar South, Kuala Lumpur, Malaysia</p>
+              <h1 className="col-span-1 mb-2">Business Address:</h1>
+              <p className="col-span-3 mb-2">{merchant.businessAddress1}, {merchant.businessAddress2}, {merchant.businessCity}, {merchant.businessState} - {merchant.businessZipcode}, {merchant.businessCountry}</p>
 
-        </div>
+            </div>
 
-        <div className="col-span-1"> 
-          <h1>Business Details</h1>
-        </div>
+            <div className="col-span-1"> 
+              <h1>Business Details</h1>
+            </div>
 
-        <div className="col-span-4 md:grid md:grid-cols-4 mb-2">
+            <div className="col-span-4 md:grid md:grid-cols-4 mb-2">
 
-          <h1 className="col-span-1 mb-2">Business Reg No.:</h1>
-          <p className="col-span-3 mb-2">1123543456</p>
+              <h1 className="col-span-1 mb-2">Business Reg No.:</h1>
+              <p className="col-span-3 mb-2">{merchant.businessRegNumber}</p>
 
-          <h1 className="col-span-1 mb-2">Business Tax ID:</h1>
-          <p className="col-span-3 mb-2">78-23433</p>
+              <h1 className="col-span-1 mb-2">Business Tax ID:</h1>
+              <p className="col-span-3 mb-2">{merchant.businessTaxId}</p>
 
-          <h1 className="col-span-1 mb-2">Company Type:</h1>
-          <p className="col-span-3 mb-2">Public Limited Company</p>
+              <h1 className="col-span-1 mb-2">Company Type:</h1>
+              <p className="col-span-3 mb-2">{merchant.businessType}</p>
 
-          <h1 className="col-span-1 mb-2">Business Size:</h1>
-          <p className="col-span-3 mb-2">31 - 50</p>
+              <h1 className="col-span-1 mb-2">Business Size:</h1>
+              <p className="col-span-3 mb-2">{merchant.businessSize}</p>
 
-          <h1 className="col-span-1 mb-2">Sales Volume:</h1>
-          <p className="col-span-3 mb-2">RM 100k - RM 500k</p>
+              <h1 className="col-span-1 mb-2">Sales Volume:</h1>
+              <p className="col-span-3 mb-2">{merchant.businessSalesVolume}</p>
 
-        </div>
+            </div>
 
-        <div className="col-span-1"> 
-          <h1>Merchant Details</h1>
-        </div>
+            <div className="col-span-1"> 
+              <h1>Merchant Details</h1>
+            </div>
 
-        <div className="col-span-4 md:grid md:grid-cols-4 mb-2">
+            <div className="col-span-4 md:grid md:grid-cols-4 mb-2">
 
-          <h1 className="col-span-1 mb-2">Merchant Name:</h1>
-          <p className="col-span-3 mb-2">Orgha Tomal Roy</p>
+              <h1 className="col-span-1 mb-2">Merchant Name:</h1>
+              <p className="col-span-3 mb-2">{merchant.merchantName}</p>
 
-          <h1 className="col-span-1 mb-2">Merchant Email:</h1>
-          <p className="col-span-3 mb-2">orgharoy@gmail.com</p>
+              <h1 className="col-span-1 mb-2">Merchant Email:</h1>
+              <p className="col-span-3 mb-2">{merchant.merchantEmail}</p>
 
-          <h1 className="col-span-1 mb-2">Merchant Phone:</h1>
-          <p className="col-span-3 mb-2">+880 1767-476903</p>
+              <h1 className="col-span-1 mb-2">Merchant Phone:</h1>
+              <p className="col-span-3 mb-2">{merchant.merchantPhone}</p>
 
-          <h1 className="col-span-1 mb-2">Business Address:</h1>
-          <p className="col-span-3 mb-2">Pantai Hillpark Phase - 5, Bangsar South, Kuala Lumpur, Malaysia</p>
+              <h1 className="col-span-1 mb-2">Business Address:</h1>
+              <p className="col-span-3 mb-2">{merchant.merchantAddress1}, {merchant.merchantAddress2}, {merchant.merchantCity}, {merchant.merchantState} - {merchant.merchantZipcode}, {merchant.merchantCountry}</p>
 
-        </div>
+            </div>
 
-      </div>
+          </div>
+        </>
+      ) }
+
     </div>
   )
 }
