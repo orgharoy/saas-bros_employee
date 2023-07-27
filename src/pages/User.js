@@ -13,7 +13,9 @@ const User = () => {
       const token = localStorage.getItem('RepeatifyToken');
 
       try {
-        const response = await axios.get(`https://saasproj.bsite.net/api/admin/merchant/${userId.id}` ,{
+        //const response = await axios.get(`https://saasproj.bsite.net/api/admin/merchant/list`
+        //const response = await axios.get(`https://saasproj.bsite.net/api/admin/merchant/${userId.id}`
+        const response = await axios.get(`https://saasproj.bsite.net/api/admin/merchant/${userId.id}`,{
           headers: {
             Authorization: `Bearer ${token}`
           }
