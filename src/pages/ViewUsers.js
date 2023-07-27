@@ -27,6 +27,7 @@ const ViewUsers = () => {
       console.log("response: " + response);
 
     } catch (error) {
+      console.log("In here");
       console.error(error);
     }
   };

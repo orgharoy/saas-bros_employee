@@ -245,8 +245,7 @@ const RegisterNewUser = ({ setModal, setNewMerchant }) => {
     const token = localStorage.getItem('RepeatifyToken');
 
     try {
-      const response = await axios.post(
-        "https://saasproj.bsite.net/api/admin/create-merchant", formValues, {
+      const response = await axios.post("https://saasproj.bsite.net/api/admin/create-merchant", formValues, {
           headers: {
             Authorization: `Bearer ${token}`
           }

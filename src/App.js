@@ -48,27 +48,6 @@ function App() {
       </div>
     </div>
 
-
-
-      // <div className="grid grid-cols-6 w-screen bg-white">
-      //   <div className= "col-span-5">
-      //     { location.pathname !== '/login' && <Topbar/> }
-      //     <div className="p-5">
-      //       <Routes>
-      //         <Route path="/login" element={<Login/>} />  
-      //         <Route path="/" element={<Dashboard/>} />
-      //         <Route path="/register-business" element={<NewUser/>} />
-      //         <Route path="/packages" element={<Packages />}/>
-      //         <Route path="/businesses" element={<MyUsers/>} />
-      //         <Route path="/calendar" element={<Calendar/>} />
-      //         <Route path="/notes" element={<Notes/>} />
-
-      //         <Route path="/user/:id" element={<User/>} />
-      //       </Routes>
-      //     </div>
-      //   </div>
-      // </div>
-
   );
 }
 
