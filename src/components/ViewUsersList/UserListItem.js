@@ -1,19 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const UserListItem = () => {
+const UserListItem = ({user}) => {
   return (
-      <Link to="/user/9bf1df3e-04fb-4377-8327-3f5eccef5987" className="md:flex justify-between border border-purple-9 rounded-md my-2 py-1 px-3 hover:shadow-md">
+      <Link to={`/user/${user.merchantId}`} className="md:flex justify-between border border-purple-9 rounded-md my-2 py-1 px-3 hover:shadow-md">
         <div className = "flex items-center col-span-2 w-2/6">
           <div className="w-7 h-7 rounded-full bg-black"></div>
           <div className="pl-3">
-            <h1 className="font-medium">Raihanul and Co.</h1>
-            <p className="text-xs font-thin">Raihanul Karim</p>
+            <h1 className="font-medium">{user.businessName}</h1>
+            <p className="text-xs font-thin">{user.merchantName}</p>
           </div>
         </div>
         <div className="flex w-4/6 justify-between">
           <div className="w-1/5">
-            <h1 className="font-medium">+60 1764-34233</h1>
+            <h1 className="font-medium">{user.businessPhone}</h1>
             <p className="text-xs font-thin">Contact Number</p>
           </div>
           <div className="w-1/5">

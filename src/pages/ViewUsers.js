@@ -6,12 +6,11 @@ import axios from 'axios';
 const ViewUsers = () => {
 
   const { userId, setUserId } = useContext(UserContext);
-  const [users, setUsers] = useState({merchants: []});
+  const [users, setUsers] = useState([]);
   const [refreshCount, setRefreshCount] = useState();
   const token = localStorage.getItem('RepeatifyToken');
 
   useEffect(() => {
-    console.log("entered useEffect");
     fetchUsers();
   }, [refreshCount, token]);
 
@@ -22,14 +21,14 @@ const ViewUsers = () => {
           Authorization: `Bearer ${token}`
         }
       });
-
-      //setUsers(response.data);
-      console.log("response: " + response);
+      setUsers(response.data);
 
     } catch (error) {
       console.error(error);
     }
   };
+
+  console.log(users);
 
   const handleRefresh = () => {
     setRefreshCount((prevCount) => prevCount + 1);
@@ -42,15 +41,19 @@ const ViewUsers = () => {
         <input placeholder="search" className="px-3 rounded-md"/>
         <button onClick={handleRefresh}>Refresh</button>
       </div>
-      <UserListItem />
-      <UserListItem />
-      <UserListItem />
-      <UserListItem />
-      {/* <div>
-        {users.merchants.map((user) => (
-          <UserListItem key={user.id} user={user}/>
-        ))}
-      </div> */}
+      <div>
+        {users.length <=0 ? (
+          <>
+            <h1>Loading...</h1>
+          </>
+        ) : (
+          <>
+            {users.map((user) => (
+              <UserListItem key={user.id} user={user}/>
+            ))}
+          </>
+        )}
+      </div>
     </div>
   )
 }
