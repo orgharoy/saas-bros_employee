@@ -33,12 +33,8 @@ const Login = () => {
     e.preventDefault();
     if (isValid()) {
       try {
-        const response = await axios.post(
-          "https://saasproj.bsite.net/api/auth/login",
-          formValues
-        );
+        const response = await axios.post("https://saasproj.bsite.net/api/auth/login", formValues );
         const token = response.data.token
-        //setUserId(employee._id);
         localStorage.setItem('RepeatifyToken', token);
         navigate('/');
       } catch (error) {

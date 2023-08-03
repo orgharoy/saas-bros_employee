@@ -24,6 +24,7 @@ const ViewUsers = () => {
       setUsers(response.data);
 
     } catch (error) {
+      console.log("In here");
       console.error(error);
     }
   };
