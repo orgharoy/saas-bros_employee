@@ -46,6 +46,7 @@ const RegisterNewUser = ({ setModal, setNewMerchant }) => {
     businessDescription: "",
     businessEmail: "",
     businessPhone: "",
+    countryCode: "",
     businessAddress1: "",
     businessAddress2: "",
     businessCity: "",
@@ -75,6 +76,7 @@ const RegisterNewUser = ({ setModal, setNewMerchant }) => {
       businessDescription: "",
       businessEmail: "",
       businessPhone: "",
+      countryCode: "",
       businessAddress1: "",
       businessAddress2: "",
       businessCity: "",
@@ -122,9 +124,9 @@ const RegisterNewUser = ({ setModal, setNewMerchant }) => {
         errors.businessPhone =
           "Invalid contact number. Please enter only numbers";
         isValid = false;
-      } else if (!formValues.businessPhone.match(/^\+?60[0-9]+$/)) {
+      } else if (!formValues.businessPhone.match(/^\+?[0-9]{9,10}$/)) {
         errors.businessPhone =
-          "Invalid contact number. Enter Country Code (+60)";
+          "Invalid contact number. Enter 9 or 10 digits of number";
         isValid = false;
       }
 
@@ -133,10 +135,11 @@ const RegisterNewUser = ({ setModal, setNewMerchant }) => {
         isValid = false;
       }
 
+      /*
       if (!formValues.businessAddress2) {
         errors.businessAddress2 = "Business Address is required";
         isValid = false;
-      }
+      } */
 
       if (!formValues.businessCity) {
         errors.businessCity = "Business Address is required";
@@ -149,7 +152,10 @@ const RegisterNewUser = ({ setModal, setNewMerchant }) => {
       }
 
       if (!formValues.businessZipcode) {
-        errors.businessZipcode = "Business Address is required";
+        errors.businessZipcode = "Zipcode is required in Business Address";
+        isValid = false;
+      } else if (!formValues.businessZipcode.match(/[0-9]+$/)) {
+        errors.businessZipcode = "Please enter only numbers";
         isValid = false;
       }
 
@@ -163,10 +169,16 @@ const RegisterNewUser = ({ setModal, setNewMerchant }) => {
       if (!formValues.businessRegNumber) {
         errors.businessRegNumber = "Business Registration Number is required";
         isValid = false;
+      } else if (!formValues.businessRegNumber.match(/[0-9]+$/)) {
+        errors.businessRegNumber = "Please enter only numbers";
+        isValid = false;
       }
 
       if (!formValues.businessTaxId) {
         errors.businessTaxId = "Business TAX ID is required";
+        isValid = false;
+      } else if (!formValues.businessTaxId.match(/[0-9]+$/)) {
+        errors.businessTaxId = "Please enter only numbers";
         isValid = false;
       }
 
@@ -241,18 +253,21 @@ const RegisterNewUser = ({ setModal, setNewMerchant }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setModal(true);
-    
-    const token = localStorage.getItem('RepeatifyToken');
+
+    const token = localStorage.getItem("RepeatifyToken");
 
     try {
-      const response = await axios.post("https://saasproj.bsite.net/api/admin/create-merchant", formValues, {
+      const response = await axios.post(
+        "https://saasproj.bsite.net/api/admin/create-merchant",
+        formValues,
+        {
           headers: {
-            Authorization: `Bearer ${token}`
-          }
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
 
-      const merchantID = response.data.merchantId
+      const merchantID = response.data.merchantId;
 
       console.log(merchantID);
 
@@ -355,7 +370,10 @@ const RegisterNewUser = ({ setModal, setNewMerchant }) => {
       return;
     } else if (page === 4) {
       return (
-        <div className="bg-purple-1 text-white p-2 rounded mx-2 cursor-pointer" onClick={handleSubmit}>
+        <div
+          className="bg-purple-1 text-white p-2 rounded mx-2 cursor-pointer"
+          onClick={handleSubmit}
+        >
           <p>Create User</p>
         </div>
       );
