@@ -1,9 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800;900&display=swap');
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 body{
     font-family: 'Montserrat', sans-serif;
 }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+.button{
+    padding: 0.3rem 1rem 0.3rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.button-purple{
+    background-color: #9b6aec;
+    color: white;
+}
+
+.button-green{
+    background-color: #16a34a;
+    color: white;
+}

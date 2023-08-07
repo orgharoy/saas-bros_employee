@@ -310,7 +310,7 @@ const RegisterNewUser = ({ setModal, setNewMerchant }) => {
     if (page === 1 || page === 2 || page === 3) {
       return (
         <div
-          className="bg-green text-white p-2 rounded mx-2 cursor-pointer"
+          className="button button-green"
           onClick={nextPage}
         >
           <h1>Next</h1>
@@ -320,7 +320,7 @@ const RegisterNewUser = ({ setModal, setNewMerchant }) => {
       return;
     } else {
       return (
-        <div className="bg-purple-6 text-white p-2 rounded mx-2 cursor-pointer">
+        <div className="button button-purple">
           <p>Fuckity Fuck</p>
         </div>
       );
@@ -333,7 +333,7 @@ const RegisterNewUser = ({ setModal, setNewMerchant }) => {
     } else if (page === 2 || page === 3 || page === 4) {
       return (
         <div
-          className="bg-purple-1 text-white p-2 rounded mx-2 cursor-pointer"
+          className="button button-purple"
           onClick={() => {
             setPage((page) => page - 1);
           }}
