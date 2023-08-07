@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import {useParams} from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
 import axios from 'axios';
-import AboutMerchant from '../components/RegisterNewUser/AboutMerchant';
 
 const User = () => {
   const userId = useParams();
@@ -13,8 +12,6 @@ const User = () => {
       const token = localStorage.getItem('RepeatifyToken');
 
       try {
-        //const response = await axios.get(`https://saasproj.bsite.net/api/admin/merchant/list`
-        //const response = await axios.get(`https://saasproj.bsite.net/api/admin/merchant/${userId.id}`
         const response = await axios.get(`https://saasproj.bsite.net/api/admin/merchant/${userId.id}`,{
           headers: {
             Authorization: `Bearer ${token}`
@@ -49,8 +46,7 @@ const User = () => {
               <h1 className="text-3xl font-semibold mt-5" >{merchant.businessName}</h1>
               <p className="text-md font-normal py-2 w-full">Software Development Company</p>
             </div>
-
-            <button className="button button-purple absolute top-0 right-0">Edit Profile</button>
+            <Link to={`/edit-merchant/${merchant.merchantId}`} className="bg-purple-4 text-white absolute top-0 right-0 py-1 px-3 rounded-md">Edit Profile</Link>
         
           </div>
 

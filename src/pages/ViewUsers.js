@@ -1,35 +1,31 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import UserListItem from '../components/ViewUsersList/UserListItem.js';
-import { UserContext } from '../userContext.js';
 import axios from 'axios';
 
 const ViewUsers = () => {
 
-  const { userId, setUserId } = useContext(UserContext);
   const [users, setUsers] = useState([]);
   const [refreshCount, setRefreshCount] = useState();
   const token = localStorage.getItem('RepeatifyToken');
 
   useEffect(() => {
+
+    const fetchUsers = async () => {
+      try {
+        const response = await axios.get("https://saasproj.bsite.net/api/admin/merchant/list", {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+        setUsers(response.data);
+  
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
     fetchUsers();
   }, [refreshCount, token]);
-
-  const fetchUsers = async () => {
-    try {
-      const response = await axios.get("https://saasproj.bsite.net/api/admin/merchant/list", {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      });
-      setUsers(response.data);
-
-    } catch (error) {
-      console.log("In here");
-      console.error(error);
-    }
-  };
-
-  console.log(users);
 
   const handleRefresh = () => {
     setRefreshCount((prevCount) => prevCount + 1);

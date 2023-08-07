@@ -9,6 +9,7 @@ import MyUsers from "./pages/ViewUsers.js";
 import Calendar from "./pages/Calendar.js";
 import Notes from "./pages/Notes.js";
 import Packages from "./pages/Packages.js";
+import EditMerchant from "./pages/EditMerchant.js";
 
 import User from "./pages/User.js";
 import Modal from "./components/Modal.js";
@@ -39,6 +40,7 @@ function App() {
                <Route path="/notes" element={<Notes/>} />
 
                <Route path="/user/:id" element={<User/>} />
+               <Route path="/edit-merchant/:id" element={<EditMerchant/>} />
              </Routes>
            </div>
       </div>
