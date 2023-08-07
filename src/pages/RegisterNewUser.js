@@ -11,8 +11,6 @@ import { UserContext } from "../userContext.js";
 const RegisterNewUser = ({ setModal, setNewMerchant }) => {
   const [page, setPage] = useState(1);
 
-  const { userId, setUserId } = useContext(UserContext);
-
   const [formValues, setFormValues] = useState({
     businessName: "",
     businessDescription: "",
