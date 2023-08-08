@@ -87,6 +87,28 @@ const Login = () => {
           {errorMessages.password && (
             <p className="text-red text-sm">{errorMessages.password}</p>
           )}
+
+          
+
+          <div class="w-full py-5">
+            <div class="relative h-10 w-full min-w-[200px]">
+              <input
+                class="peer h-full w-full rounded-[7px] border border-blue-gray-200 bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-pink-500 focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+                placeholder=" "
+              />
+              <label class="ml-3 px-1 pointer-events-none absolute left-0 -top-1.5 flex select-none text-[11px] font-normal leading-tight text-blue-gray-400 transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-pink-500 peer-focus:bg-white peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
+                Required
+              </label>
+            </div>
+          </div>
+
+          <div class="relative">
+            <input type="text" id="floating_outlined" class="block border px-2.5 pb-2.5 pt-4 w-full text-sm text-purple-1 bg-transparent rounded-lg border-1 border-purple-1 appearance-none dark:text-purple-3 dark:border-purple-6 dark:focus:border-purple-6 focus:outline-none focus:ring-0 focus:border-purple-1 peer" placeholder=" " />
+            <label for="floating_outlined" class="absolute text-sm text-purple-1 dark:text-purple-4 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-white px-2 peer-focus:px-2 peer-focus:text-purple-2 peer-focus:dark:text-purple-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Floating outlined</label>
+          </div>
+
+
+
           <button
             className="text-white mt-4 mb-3 bg-purple-4 rounded-md border font-bold py-2 px-4 w-full hover:bg-purple-2"
             onClick={handleSubmit}
